@@ -1,16 +1,16 @@
+# config Library
 import config
-#webDriver libraries
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from googlesearch import GoogleSearch
-import pywapi
 
+#urlParser libraries
+import urllib2
+#from lxml import html
+
+# weatherAPI Library
+import pywapi
 
 #webPage parsing
 from bs4 import BeautifulSoup
 
-#create driver object
-#driver = webdriver.Chrome()
 
 def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
@@ -22,7 +22,7 @@ def dataFetcher(type,data):
         fetchStock(data) 
     
 def fetchWeather(data):
-    "This function fetches weather details for the city client requests for"
+    "This function fetches weather details for the client requested location"
     city = data[0]
     lookup = pywapi.get_location_ids(city)
  
@@ -41,7 +41,11 @@ def fetchWeather(data):
     
 
 def fetchNews(data):
-    soup = BeautifulSoup(config.newsLink, "html.parser")
+    "This function fetches top news stories"
+    response = urllib2.urlopen(config.newsLink)
+    htmlPage = response.read()
+    #print htmlPage
+    soup = BeautifulSoup(page, "html.parser")
     print soup
     
 def fetchStock(data):
