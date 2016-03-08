@@ -44,9 +44,28 @@ def fetchNews(data):
     "This function fetches top news stories"
     response = urllib2.urlopen(config.newsLink)
     htmlPage = response.read()
-    #print htmlPage
-    soup = BeautifulSoup(page, "html.parser")
-    print soup
+
+    soup = BeautifulSoup(htmlPage,"html.parser")
+    topStories = soup.find(class_ = "section-content")
+    #print topStories
+    # First Story
+    story = topStories.find(class_="blended-wrapper blended-wrapper-first esc-wrapper")
+    print "Headline " + topStories.find(class_= "titletext").text
+    print "Story " + story.find(class_ = "esc-lead-snippet-wrapper").text
+    print "\n\n"
+    
+    story = topStories.find(class_ = "blended-wrapper esc-wrapper")
+    print story
+    while(story):
+       print "Headline " + story.find(class_= "titletext").text
+       print "Story " + story.find(class_ = "esc-lead-snippet-wrapper").text
+       print "\n\n"
+       story = topStories.find_next(class_="blended-wrapper esc-wrapper")
+    
+   
+        
+        
+    
     
 def fetchStock(data):
     print "Stock"    
