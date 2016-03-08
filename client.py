@@ -1,7 +1,19 @@
 
-import os
-import socket
+import socketClass
+import time
+import config
 
+client = socketClass.Socket()
+client.connect(client.getHostName(), config.clientPort)
+client.send("Hello ;) - ********F***U*********")
+data = client.recieve()
+
+client.terminate()
+
+print data
+
+
+'''
 # Create socket obj for TCP/IP
 clientSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -20,3 +32,4 @@ time = clientSocket.recv(1024)
 clientSocket.close()
 
 print("Time recieved from server is %s" %time.decode('ascii'))
+'''
