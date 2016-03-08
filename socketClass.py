@@ -1,6 +1,5 @@
-MSGLEN = 1024
-
 import socket
+import config
 
 class Socket:
     # Constructor method 
@@ -37,10 +36,10 @@ class Socket:
     # Recieve data from socket
     def recieve(self):
         chunks = []
-        chunk = self.socket.recv(2048)
+        chunk = self.socket.recv(config.MSGLEN)
         if chunk is None:
             raise RuntimeError("Socket connection Broken")
         return chunk
-        
+
     def terminate(self):
         self.socket.close()

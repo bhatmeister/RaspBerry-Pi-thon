@@ -1,10 +1,13 @@
 
 import socketClass
 import time
+import config
 
 client = socketClass.Socket()
-client.connect(client.getHostName(), 9999)
+client.connect(client.getHostName(), config.clientPort)
+client.send("Hello ;) - ********F***U*********")
 data = client.recieve()
+
 client.terminate()
 
 print data
