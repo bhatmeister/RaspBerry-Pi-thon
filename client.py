@@ -5,7 +5,8 @@ import config
 
 client = socketClass.Socket()
 client.connect(client.getHostName(), config.clientPort)
-client.send("Hello ;) - ********F***U*********")
+#userInput = input("Enter Location:  ")
+client.send("0,New Delhi")
 data = client.recieve()
 
 client.terminate()
