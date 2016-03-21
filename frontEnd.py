@@ -4,7 +4,8 @@ from PIL import Image, ImageTk
 
 def clear(entry1):
     entry1.delete(0,tk.END)
-
+def sendReq(data):
+    print data
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -22,12 +23,11 @@ class Weather(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
 
-        def prn(data):
-            print data
+
             
         entry1 =tk.Entry(self, width=30)
         entry1.insert(0,'Location')
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: prn(entry1.get()))
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(entry1.get()))
         button5.place(x=300,y=195)
         entry1.place(x=235,y=137)
 
