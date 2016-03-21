@@ -12,15 +12,23 @@ while True:
     (clientData,(ip,port)) = server.accept()
     client = socketClass.Socket(clientData)
     print("Got a connection from %s" %str(ip))
-    data = client.recieve()
-
-    data = data.split(',')
-    returnData = dataFetcher(data[0], data[1])
-    #print("Got some data from client %s" %data)
-    currentTime = time.ctime(time.time())+"\r\n"
-    #client.send(currentTime.encode('ascii'))
-    client.send(returnData.encode('utf8'))
     
+    while True:
+        
+        data = client.recieve()
+
+        data = data.split('#')
+
+        print(data)
+
+        returnData = dataFetcher(data[0], data[1])
+        #print("Got some data from client %s" %data)
+        currentTime = time.ctime(time.time())+"\r\n"
+        
+        print "Sent Data"
+        client.send(returnData.encode('utf8'))
+
+        
     client.terminate()
 
 server.terminate()
