@@ -1,7 +1,7 @@
 import Tkinter as tk
 from PIL import Image, ImageTk
 
-
+os.system("python client.py")
 def clear(entry1):
     entry1.delete(0,tk.END)
 def sendReq(data):
@@ -12,7 +12,7 @@ class Page(tk.Frame):
         tk.Frame.__init__(self, *args, **kwargs)
     def show(self):
         self.lift()
-        
+
 class Home(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
@@ -24,7 +24,7 @@ class Weather(Page):
         Page.__init__(self, *args, **kwargs)
 
 
-            
+
         entry1 =tk.Entry(self, width=30)
         entry1.insert(0,'Location')
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(entry1.get()))
@@ -49,25 +49,25 @@ class Stocks(Page):
         label = tk.Label(self, text="Stock Name")
         label.place(x=200,y=150)
         label = tk.Label(self, text="Value")
-        label.place(x=360,y=150)      
+        label.place(x=360,y=150)
         label = tk.Label(self, text="Stock Name")
         label.place(x=200,y=180)
         label = tk.Label(self, text="Value")
-        label.place(x=360,y=180) 
+        label.place(x=360,y=180)
         label = tk.Label(self, text="Stock Name")
         label.place(x=200,y=210)
         label = tk.Label(self, text="Value")
-        label.place(x=360,y=210)  
+        label.place(x=360,y=210)
 class News(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        
+
         image= Image.open("download (1).jpeg")
         photo=ImageTk.PhotoImage(image)
         label = tk.Label(self,image=photo, height=75, width=175)
         label.image = photo # keep a reference!
         label.place(x=0,y=15)
-        
+
         T = tk.Text(self, height=6, width=60)
         T.place(x=240, y=25)
         quote = """HAMLET: To be, or not to be--that is the question:
@@ -83,7 +83,7 @@ class News(Page):
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        
+
         T = tk.Text(self, height=6, width=60)
         T.place(x=240, y=160)
         quote = """HAMLET: To be, or not to be--that is the question:
@@ -99,7 +99,7 @@ class News(Page):
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        
+
         T = tk.Text(self, height=6, width=60)
         T.place(x=240, y=280)
         quote = """HAMLET: To be, or not to be--that is the question:
@@ -115,7 +115,7 @@ class News(Page):
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        
+
         image= Image.open("download (1).jpeg")
         photo=ImageTk.PhotoImage(image)
         label = tk.Label(self,image=photo, height=75, width=175)
@@ -126,12 +126,12 @@ class News(Page):
         label = tk.Label(self,image=photo, height=75, width=175)
         label.image = photo # keep a reference!
         label.place(x=0,y=285)
-        
-        
+
+
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-        
+
 
         p1 = Home(self)
         p2 = Weather(self)
@@ -162,10 +162,10 @@ class MainView(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-    
+
 
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
     root.minsize(675 ,415)
     root.maxsize(675,415)
-    root.mainloop()        
+    root.mainloop()
