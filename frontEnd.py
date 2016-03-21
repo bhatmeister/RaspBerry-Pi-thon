@@ -1,6 +1,5 @@
 import Tkinter as tk
 from PIL import Image, ImageTk
-from client.py import *
 
 
 def clear(entry1):
