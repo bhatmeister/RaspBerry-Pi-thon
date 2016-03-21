@@ -2,7 +2,7 @@
 import time
 import socketClass
 import config
-import fetch
+from fetchData import *
 
 server = socketClass.Socket()
 server.bind(server.getHostName(), 13000)
@@ -14,13 +14,12 @@ while True:
     print("Got a connection from %s" %str(ip))
     data = client.recieve()
 
-    words = data.split(",")
-    #print(words)
-    returnData = dataFetcher(data[])
+    data = data.split(',')
+    returnData = dataFetcher(data[0], data[1])
     #print("Got some data from client %s" %data)
     currentTime = time.ctime(time.time())+"\r\n"
     #client.send(currentTime.encode('ascii'))
-    client.send(returnData.encode('ascii'))
+    client.send(returnData.encode('utf8'))
     
     client.terminate()
 
