@@ -77,4 +77,4 @@ def fetchNews():
 
 
 #city = raw_input("Enter the name of the city\n") #for weather
-#dataFetcher('0',city)
+#print dataFetcher('0','New Delhi')
