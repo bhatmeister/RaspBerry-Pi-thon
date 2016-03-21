@@ -5,8 +5,8 @@ import config
 
 client = socketClass.Socket()
 client.connect("192.168.1.103", 13000)
-#userInput = input("Enter Location:  ")
-client.send('0,New Delhi')
+userInput = raw_input("Enter Location:  ")
+client.send('0#' + userInput)
 data = client.recieve()
 
 client.terminate()
