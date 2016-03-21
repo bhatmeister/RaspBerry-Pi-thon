@@ -1,5 +1,5 @@
 import Tkinter as tk
-from PIL import Image, ImageTk
+#from PIL import Image, ImageTk
 from client import *
 import os
 
@@ -62,11 +62,11 @@ class News(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
 
-        image= Image.open("download (1).jpeg")
+        '''image= Image.open("download (1).jpeg")
         photo=ImageTk.PhotoImage(image)
         label = tk.Label(self,image=photo, height=75, width=175)
         label.image = photo # keep a reference!
-        label.place(x=0,y=15)
+        label.place(x=0,y=15)'''
 
         T = tk.Text(self, height=6, width=60)
         T.place(x=240, y=25)
@@ -116,7 +116,7 @@ class News(Page):
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
-        image= Image.open("download (1).jpeg")
+    '''    image= Image.open("download (1).jpeg")
         photo=ImageTk.PhotoImage(image)
         label = tk.Label(self,image=photo, height=75, width=175)
         label.image = photo # keep a reference!
@@ -125,7 +125,7 @@ class News(Page):
         photo=ImageTk.PhotoImage(image)
         label = tk.Label(self,image=photo, height=75, width=175)
         label.image = photo # keep a reference!
-        label.place(x=0,y=285)
+        label.place(x=0,y=285)'''
 
 
 class MainView(tk.Frame):
