@@ -4,7 +4,7 @@ import socketClass
 import config
 
 server = socketClass.Socket()
-server.bind(server.getHostName(), config.serverPort)
+server.bind(server.getHostName(), 13000)
 server.listen(5)
 
 while True:
