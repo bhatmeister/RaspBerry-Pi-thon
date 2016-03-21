@@ -2,6 +2,7 @@
 
 
 newsLink = "https://news.google.co.in/"
+stocksLink = "http://www.google.com/finance"
 
 # Data
 MSGLEN = 2048

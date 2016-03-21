@@ -23,10 +23,11 @@ def dataFetcher(type,data):
 
 def fetchWeather(data):
     "This function fetches weather details for the client requested location"
-    city = data[0]
+    city = str(data)
     lookup = pywapi.get_location_ids(city)
 
     #workaround to access last item of dictionary
+    print lookup
     for i in lookup:
         location_id = i
     #location_id now contains the city's code
@@ -54,8 +55,21 @@ def fetchNews():
 
 
 
-def fetchStock(data):
-    print "Stock"
+'''def fetchStock(data):
+    "This function fetches the stock details"
+    response = urllib2.urlopen(config.stocksLink)
+    htmlPage = response.read()
 
-data = ["New Delhi"]
-dataFetcher(1,data)
+    soup = BeautifulSoup(htmlPage,"html.parser")
+    table = soup.find('table',class_="quotes")
+    tbody = table.find('tbody')
+    stocks = str((tbody.find('tr')).find('td').text).split()
+    for i in range(0,15,3):
+        print stocks[i]
+        print stocks[i+1]
+        print stocks[i+2]'''
+
+
+
+city = raw_input("Enter the name of the city\n") #for weather
+dataFetcher(0,city)
