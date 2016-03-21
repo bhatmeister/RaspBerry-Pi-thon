@@ -1,6 +1,6 @@
 import os
 from socket import *
-host = "192.168.1.178" # set to IP address of target computer
+host = "192.168.1.108" # set to IP address of target computer
 port = 13000
 addr = (host, port)
 UDPSock = socket(AF_INET, SOCK_DGRAM)
