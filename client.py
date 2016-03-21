@@ -9,8 +9,8 @@ client.connect(config.serverIP, config.clientPort)
 
 '''def requestData():
     "This function requests data from the server"
-    userInput = sendReq()
-'''
+    userInput = sendReq()'''
+
 
 def requestData(userInput):
     "This function requests data from the server"
