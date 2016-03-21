@@ -5,7 +5,7 @@ import config
 
 
 client = socketClass.Socket()
-client.connect("192.168.1.103", 13000)
+client.connect(config.serverIP, config.clientPort)
 
 '''def requestData():
     "This function requests data from the server"

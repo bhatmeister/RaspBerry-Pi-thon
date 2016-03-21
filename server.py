@@ -5,18 +5,18 @@ import config
 from fetchData import *
 
 server = socketClass.Socket()
-server.bind(server.getHostName(), 13000)
+server.bind(server.getHostName(), config.serverPort)
 server.listen(5)
 
 while True:
     (clientData,(ip,port)) = server.accept()
     client = socketClass.Socket(clientData)
     print("Got a connection from %s" %str(ip))
-    
+
     while True:
 
         data = client.recieve()
-        
+
         if '~' in data:
             break
 
@@ -27,11 +27,11 @@ while True:
         returnData = dataFetcher(data[0], data[1])
         #print("Got some data from client %s" %data)
         currentTime = time.ctime(time.time())+"\r\n"
-        
+
         print "Sent Data"
         client.send(returnData.encode('utf8'))
 
-        
+
     client.terminate()
 
 server.terminate()
