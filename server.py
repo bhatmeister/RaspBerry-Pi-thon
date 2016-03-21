@@ -5,7 +5,9 @@ import config
 from fetchData import *
 
 server = socketClass.Socket()
+print '1'
 server.bind(server.getHostName(), config.serverPort)
+print '2'
 server.listen(5)
 
 print "Server Listening at"
@@ -13,13 +15,14 @@ print server.getHostName()
 
 while True:
     (clientData,(ip,port)) = server.accept()
+    print '3'
     client = socketClass.Socket(clientData)
     print("Got a connection from %s" %str(ip))
 
     while True:
 
         data = client.recieve()
-
+        print '4'
         if '~' in data:
             break
 
