@@ -8,6 +8,9 @@ server = socketClass.Socket()
 server.bind(server.getHostName(), config.serverPort)
 server.listen(5)
 
+print "Server Listening at"
+print server.getHostName()
+
 while True:
     (clientData,(ip,port)) = server.accept()
     client = socketClass.Socket(clientData)
