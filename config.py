@@ -8,10 +8,9 @@ stocksLink = "http://www.google.com/finance"
 MSGLEN = 2048
 
 # Server
-serverPort = 20000
+serverPort = 12345 
 
 # Client
-clientPort = 13000
-
+clientPort = 12345
 # ServerIP
 serverIP = "192.168.1.108"
