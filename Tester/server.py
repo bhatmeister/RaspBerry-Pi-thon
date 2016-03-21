@@ -6,7 +6,7 @@ port = 13000
 buf = 1024
 
 UDPSock = socket(AF_INET, SOCK_DGRAM)
-addr = (UDPSock.getHostName(), port)
+addr = (socket.getHostName(), port)
 UDPSock.bind(addr)
 print "Waiting to receive messages..."
 while True:
