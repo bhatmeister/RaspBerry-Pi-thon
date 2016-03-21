@@ -27,7 +27,7 @@ class Weather(Page):
         Page.__init__(self, *args, **kwargs)
         entry1 =tk.Entry(self, width=30)
         entry1.insert(0,'Location')
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(entry1.get()))
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: requestData(entry1.get()))
         button5.place(x=300,y=195)
         entry1.place(x=235,y=137)
 
