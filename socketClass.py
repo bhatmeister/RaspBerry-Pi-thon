@@ -24,7 +24,8 @@ class Socket:
         return self.socket.accept()
 
     def getHostName(self):
-        return socket.gethostname()
+            #return socket.gethostname()
+            return config.serverIP
 
     # Send Data through socket
     def send(self, message):
