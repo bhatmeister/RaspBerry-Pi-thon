@@ -1,5 +1,11 @@
 import Tkinter as tk
 from PIL import Image, ImageTk
+#from client.py import *
+
+
+def clear(entry1):
+    entry1.delete(0,tk.END)
+
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -16,13 +22,13 @@ class Home(Page):
 class Weather(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        def clear(event):
-            entry1.delete(0,END)
-        
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10 ) 
+
+        def prn(data):
+            print data
+            
         entry1 =tk.Entry(self, width=30)
         entry1.insert(0,'Location')
-        entry1.bind('<Button-1>' , clear)
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: prn(entry1.get()))
         button5.place(x=300,y=195)
         entry1.place(x=235,y=137)
 
