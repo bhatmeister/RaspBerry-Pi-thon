@@ -5,7 +5,9 @@ import config
 
 
 client = socketClass.Socket()
-client.connect(config.serverIP, config.clientPort)
+print "client socket created"
+client.connect(config.serverIP,config.clientPort)
+print "connection requested"
 
 '''def requestData():
     "This function requests data from the server"
