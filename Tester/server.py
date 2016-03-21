@@ -4,8 +4,9 @@ from socket import *
 host = ""
 port = 13000
 buf = 1024
-addr = (host, port)
+
 UDPSock = socket(AF_INET, SOCK_DGRAM)
+addr = (UDPSock.getHostName(), port)
 UDPSock.bind(addr)
 print "Waiting to receive messages..."
 while True:
