@@ -1,18 +1,13 @@
-# Message Receiver
-import os
-from socket import *
-host = ""
-port = 13000
-buf = 1024
+import socket
 
-UDPSock = socket(AF_INET, SOCK_DGRAM)
-addr = (socket.getHostName(), port)
-UDPSock.bind(addr)
-print "Waiting to receive messages..."
+s = socket.socket()
+host = '192.168.1.108' #ip of raspberry pi
+port = 12345
+s.bind((host, port))
+
+s.listen(5)
 while True:
-    (data, addr) = UDPSock.recvfrom(buf)
-    print "Received message: " + data
-    if data == "exit":
-        break
-UDPSock.close()
-os._exit(0)
+  c, addr = s.accept()
+  print ('Got connection from',addr)
+  c.send('Thank you for connecting')
+  c.close()
