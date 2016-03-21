@@ -1,10 +1,8 @@
 import Tkinter as tk
 from PIL import Image, ImageTk
-<<<<<<< Updated upstream
 from client.py import *
-=======
 import os
->>>>>>> Stashed changes
+
 
 os.system("python client.py")
 def clear(entry1):
