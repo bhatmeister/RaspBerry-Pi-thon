@@ -4,7 +4,7 @@ import time
 import config
 
 client = socketClass.Socket()
-client.connect("192.168.1.103", 13000)
+client.connect("192.168.1.108", 20000)
 while 1:
     userInput = raw_input("Enter Location:  ")
     client.send('0#' + userInput)
