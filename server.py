@@ -14,8 +14,11 @@ while True:
     print("Got a connection from %s" %str(ip))
     
     while True:
-        
+
         data = client.recieve()
+        
+        if '~' in data:
+            break
 
         data = data.split('#')
 
