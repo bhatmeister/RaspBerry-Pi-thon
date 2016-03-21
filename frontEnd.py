@@ -1,6 +1,6 @@
 import Tkinter as tk
 from PIL import Image, ImageTk
-from client.py import *
+from client import *
 import os
 
 

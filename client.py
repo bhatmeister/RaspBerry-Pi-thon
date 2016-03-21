@@ -2,7 +2,7 @@
 import socketClass
 import time
 import config
-from frontEnd import *
+
 
 client = socketClass.Socket()
 client.connect("192.168.1.103", 13000)
@@ -20,5 +20,5 @@ def requestData(userInput):
         data = client.recieve()
         print data + "\n"
         if userInput == "~":
-        break
+            break
     client.terminate()
