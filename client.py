@@ -2,18 +2,19 @@
 import socketClass
 import time
 import config
-
+from frontEnd import *
 
 client = socketClass.Socket()
 client.connect("192.168.1.103", 13000)
 
 def requestData():
     "This function requests data from the server"
+    userInput = sendReq()
 
 
 
 while 1:
-    userInput = raw_input("Enter Location:  ")
+    #userInput = raw_input("Enter Location:  ")
     client.send('0#' + userInput)
     data = client.recieve()
     print data + "\n"
