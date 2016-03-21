@@ -14,6 +14,7 @@ from bs4 import BeautifulSoup
 
 def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
+    rData = "No Data"
     if type == '0':
         rData = fetchWeather(data)
     elif type == '1':
@@ -26,9 +27,8 @@ def fetchWeather(data):
     "This function fetches weather details for the client requested location"
     city = str(data)
     lookup = pywapi.get_location_ids(city)
-
     #workaround to access last item of dictionary
-    print lookup
+    #print lookup
     for i in lookup:
         location_id = i
     #location_id now contains the city's code
@@ -77,4 +77,4 @@ def fetchNews():
 
 
 city = raw_input("Enter the name of the city\n") #for weather
-dataFetcher(0,city)
+dataFetcher('0',city)
