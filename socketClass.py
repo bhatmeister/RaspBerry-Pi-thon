@@ -41,5 +41,6 @@ class Socket:
             raise RuntimeError("Socket connection Broken")
         return chunk
 
+    # Close socket
     def terminate(self):
         self.socket.close()

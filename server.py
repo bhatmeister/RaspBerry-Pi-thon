@@ -12,7 +12,11 @@ while True:
     client = socketClass.Socket(clientData)
     print("Got a connection from %s" %str(ip))
     data = client.recieve()
-    print("Got some data from client %s" %data)
+
+    words = data.split(",")
+    print(words)
+
+    #print("Got some data from client %s" %data)
     currentTime = time.ctime(time.time())+"\r\n"
     client.send(currentTime.encode('ascii'))
     client.terminate()
@@ -26,7 +30,7 @@ server.terminate()
 
 # Create a socket object
 # AF_INET - Family
-# SOCK_STREAM - Protocal
+# SOCK_STREAM - Protocol
 serverSocket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 
 # get local machine name
