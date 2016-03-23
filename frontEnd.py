@@ -48,10 +48,13 @@ class Weather(Page):
         Page.__init__(self, *args, **kwargs)
         Locn =tk.Entry(self, width=30)
         Locn.insert(0,'Location')
+        Temp=tk.Label(self,text=" ")
+        Status=tk.Label(self,text=" ")
+        Humidity=tk.Label(self, text=" ")
         def sendReq(data):
-            Temp=tk.Label(self,text=" ")
-            Status=tk.Label(self,text=" ")
-            Humidity=tk.Label(self, text=" ")
+            Temp=.config(self,text=" )
+            Status.config(self,text=" ")
+            Humidity.config(self, text=" ")
             Weather_Report=requestData(data)
             if Weather_Report == "0":
                 Temp.config(self,text="City not found", font=("Helvetica",48))
