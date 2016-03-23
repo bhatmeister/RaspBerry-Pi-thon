@@ -26,7 +26,7 @@ class Home(Page):
         entry1.insert(0,'Enter The Server IP Address')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: requestData(entry1.get()))
         button5.place(x=300,y=195)
-        entry1.place(x=235,y=137))
+        entry1.place(x=235,y=137)
 
 class Weather(Page):
     def __init__(self, *args, **kwargs):

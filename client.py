@@ -2,11 +2,11 @@ import socketClass
 import time
 import config
 
-
-client = socketClass.Socket()
-print "client socket created"
-client.connect(config.serverIP,config.clientPort)
-print "connection requested"
+def createSocket:
+    client = socketClass.Socket()
+    print "client socket created"
+    client.connect(config.serverIP,config.clientPort)
+    print "connection requested"
 
 
 
