@@ -28,7 +28,7 @@ class Socket:
         return config.serverIP
 
     def timeout(self,timeoutDuration):
-        return self.socket.timeout(timeoutDuration)
+        return self.socket.settimeout(timeoutDuration)
 
     # Send Data through socket
     def send(self, message):
