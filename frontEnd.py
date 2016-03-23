@@ -58,7 +58,7 @@ class Weather(Page):
             Humidity=tk.Label(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))                     
             Humidity.place(x=100, y=240)            
             quote = """\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]   
-            T.insert(tk.END,quote)
+            #T.insert(tk.END,quote)
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
