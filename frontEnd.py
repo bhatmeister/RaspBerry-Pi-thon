@@ -1,5 +1,4 @@
 import Tkinter as tk
-#from PIL import Image, ImageTk
 from client import *
 import os
 
@@ -40,7 +39,6 @@ class Home(Page):
         Port =tk.Entry(self, width=20)
         Port.insert(0,'Enter the Port Number')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
-        # IP.bind('<1>', clear(IP))
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
         Port.place(x=360,y=137)
@@ -53,41 +51,19 @@ class Weather(Page):
         def sendReq(data):
             Weather_Report=requestData(data)
             Weather_Report=Weather_Report.split('$')
-            T = tk.Text(self, height=6, width=80)
-            T.pack(side ="top", fill="x")
-            quote = """The temprature is """ +Weather_Report[0]+"""\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]   
+            Temp=tk.Label(self,text=Weather_Report[0], font=("Helvetica",48))
+            Temp.place(x=300, y=150)            
+            Status=tk.Label(self,text=Weather_Report[1], font=("Helvetica",24))
+            Status.place(x=300, y=200)   
+            Humidity=tk.Label(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))                     
+            Humidity.place(x=100, y=240)            
+            quote = """\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]   
             T.insert(tk.END,quote)
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
 
-# class Stocks(Page):
-#     def __init__(self, *args, **kwargs):
-#         Page.__init__(self, *args, **kwargs)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=50)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=50)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=90)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=90)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=120)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=120)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=150)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=150)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=180)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=180)
-#         label = tk.Label(self, text="Stock Name")
-#         label.place(x=200,y=210)
-#         label = tk.Label(self, text="Value")
-#         label.place(x=360,y=210)
+
 
 class News(Page):
     def __init__(self, *args, **kwargs):
@@ -176,17 +152,14 @@ class MainView(tk.Frame):
 
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-        # p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
         b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=30)
         b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=30)
-        # b3 = tk.Button(buttonframe, text="Stocks", command=p3.lift,width=20)
         b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=30)
 
         b1.pack(side="left")
         b2.pack(side="left")
-        # b3.pack(side="left")
         b4.pack(side="left")
 
         p1.show()
