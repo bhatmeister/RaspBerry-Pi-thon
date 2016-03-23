@@ -3,6 +3,8 @@ import time
 import config
 import socket
 
+client = ''
+
 def createSocket():
     client = socketClass.Socket()
     print "socket created"
