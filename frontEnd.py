@@ -50,14 +50,18 @@ class Weather(Page):
         Locn.insert(0,'Location')
         def sendReq(data):
             Weather_Report=requestData(data)
-            Weather_Report=Weather_Report.split('$')
-            Temp=tk.Label(self,text=Weather_Report[0], font=("Helvetica",48))
-            Temp.place(x=300, y=150)            
-            Status=tk.Label(self,text=Weather_Report[1], font=("Helvetica",24))
-            Status.place(x=300, y=200)   
-            Humidity=tk.Label(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))                     
-            Humidity.place(x=100, y=240)            
-            quote = """\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]   
+            if Weather_Report == 0:
+                Temp=tk.Label(self,text="City not found", font=("Helvetica",48))
+                Temp.place(x=300, y=150)
+            else:
+                Weather_Report=Weather_Report.split('$')
+                Temp=tk.Label(self,text=Weather_Report[0], font=("Helvetica",48))
+                Temp.place(x=300, y=150)
+                Status=tk.Label(self,text=Weather_Report[1], font=("Helvetica",24))
+                Status.place(x=300, y=200)
+                Humidity=tk.Label(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
+                Humidity.place(x=100, y=240)
+                quote = """\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]
             #T.insert(tk.END,quote)
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
