@@ -11,6 +11,7 @@ def createSocket(serverIP,serverPort):
         client.connect(serverIP,config.clientPort)
         return 1
     except socket.error, exc:
+        print exc 
         return 0
 
 
