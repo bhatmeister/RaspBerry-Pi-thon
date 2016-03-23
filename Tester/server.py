@@ -1,9 +1,11 @@
 import socket
 
 s = socket.socket()
-host = '192.168.1.108' #ip of raspberry pi
-port = 12345
+host = gethostname() #ip of raspberry pi
+port = 13000
 s.bind((host, port))
+
+print ("Server Listening at /(host)",host)
 
 s.listen(5)
 while True:
