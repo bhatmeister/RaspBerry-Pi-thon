@@ -19,5 +19,7 @@ def requestData(userInput):
     client.send('0#' + userInput)
     data = client.recieve()
     print data + "\n"
+    return data
     if userInput == "~":
+        return 0
         client.terminate()
