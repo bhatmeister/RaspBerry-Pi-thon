@@ -4,6 +4,7 @@ import os
 
 createSocket()
 
+
 def clear(entry1):
     entry1.delete(0,tk.END)
 

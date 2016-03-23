@@ -3,7 +3,7 @@ import time
 import config
 import socket
 
-client = ''
+client = socket
 
 def createSocket():
     client = socketClass.Socket()
