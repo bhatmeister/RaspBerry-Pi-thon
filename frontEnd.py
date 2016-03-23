@@ -2,10 +2,15 @@ import Tkinter as tk
 from client import *
 import os
 
+<<<<<<< HEAD
 client = createSocket()
+=======
+>>>>>>> origin/master
 
-def clear(entry1):
-    entry1.delete(0,tk.END)
+
+
+
+
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -21,7 +26,11 @@ class Home(Page):
         def serveConnect(IP,Port):
             T = tk.Text(self, height=4, width=50)
             T.place(x=270, y=255)
+<<<<<<< HEAD
             connStatus = connectToSocket(IP,Port,client)
+=======
+            connStatus = createSocket(IP,Port)
+>>>>>>> origin/master
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
             elif connStatus == 0:
@@ -48,11 +57,25 @@ class Weather(Page):
         Temp=tk.Label(self,text=" ")
         Status=tk.Label(self,text=" ")
         Humidity=tk.Label(self, text=" ")
+        Forecast=tk.Label(self, text=" ")
+        Forecast2=tk.Label(self, text=" ")
+        Forecast3=tk.Label(self, text=" ")
+        Forecast4=tk.Label(self, text=" ")
+        Forecast5=tk.Label(self, text=" ")
         def sendReq(data):
             Temp.config(text=" ")
             Status.config(text=" ")
             Humidity.config(text=" ")
+<<<<<<< HEAD
             Weather_Report=requestData(data, client)
+=======
+            Forecast.config(text=" ")
+            Forecast2.config(text=" ")
+            Forecast3.config(text=" ")
+            Forecast4.config(text=" ")
+            Forecast5.config(text=" ")
+            Weather_Report=requestData(data)
+>>>>>>> origin/master
             if Weather_Report == "0":
                 Temp.config(text="City not found", font=("Helvetica",48))
                 Temp.place(x=300, y=150)
@@ -65,7 +88,18 @@ class Weather(Page):
                 Humidity.config(text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
                 Humidity.place(x=100, y=240)
                 Weather_Report[3]=Weather_Report[3].split('^')
-
+                Weather_Report[4]=Weather_Report[4].split('^')
+                Weather_Report[5]=Weather_Report[5].split('^')
+                Weather_Report[6]=Weather_Report[6].split('^')
+                Weather_Report[7]=Weather_Report[7].split('^')
+                Forecast.config(text=" ")
+                Forecast2.config(text=" ")
+                Forecast3.config(text=" ")
+                Forecast4.config(text=" ")
+                Forecast5.config(text=" ")
+                
+                
+                
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)

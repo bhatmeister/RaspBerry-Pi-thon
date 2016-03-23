@@ -39,8 +39,11 @@ def fetchWeather(data):
             returnedData = returnedData + days["day_of_week"] + "^" + days["high"] +  u"\u00B0" +"C^" + days["low"] +  u"\u00B0" + "C$"
 
         return returnedData
-    except UnboundLocalError,KeyError:
+    except UnboundLocalError:
         print "City does not exist"
+        return "0"
+    except KeyError:
+        print "Key Error Exception caught"
         return "0"
         # + str(UnboundLocalError) + "\n"
 

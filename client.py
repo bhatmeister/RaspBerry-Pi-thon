@@ -3,6 +3,11 @@ import time
 import config
 import socket
 
+<<<<<<< HEAD
+=======
+client = socket
+
+>>>>>>> origin/master
 def createSocket():
     try:
         client = socketClass.Socket()
