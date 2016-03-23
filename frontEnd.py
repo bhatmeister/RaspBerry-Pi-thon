@@ -2,13 +2,10 @@ import Tkinter as tk
 from client import *
 import os
 
+createSocket()
 
-os.system("python client.py")
 def clear(entry1):
     entry1.delete(0,tk.END)
-
-
-
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -24,7 +21,7 @@ class Home(Page):
         def serveConnect(IP,Port):
             T = tk.Text(self, height=4, width=50)
             T.place(x=270, y=255)
-            connStatus = createSocket(IP,Port)
+            connStatus = connectToSocket(IP,Port)
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
             elif connStatus == 0:

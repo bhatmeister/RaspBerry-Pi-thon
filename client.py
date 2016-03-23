@@ -3,15 +3,17 @@ import time
 import config
 import socket
 
-client = socketClass.Socket()
-print "socket created"
-client.timeout(50)
-def createSocket(serverIP,serverPort):
+def createSocket():
+    client = socketClass.Socket()
+    print "socket created"
+    client.timeout(50)
+    
+def connectToSocket(serverIP,serverPort):
     try:
         client.connect(serverIP,config.clientPort)
         return 1
     except socket.error, exc:
-        print exc 
+        print exc
         return 0
 
 
