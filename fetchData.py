@@ -36,7 +36,7 @@ def fetchWeather(data):
         weatherResult = pywapi.get_weather_from_weather_com(location_id , units = 'metric')
         returnedData = weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C$" + "It is " + weatherResult["current_conditions"]["text"] + "$" + weatherResult["current_conditions"]["humidity"] + "%" + "$\nForecasts "
         for days in weatherResult["forecasts"]:
-            returnedData = returnedData + days["day_of_week"] + " High " + days["high"] +  u"\u00B0" +"C  Low " + days["low"] +  u"\u00B0" + "C"
+            returnedData = returnedData + days["day_of_week"] + "^" + days["high"] +  u"\u00B0" +"C^" + days["low"] +  u"\u00B0" + "C$"
 
         return returnedData
     except UnboundLocalError:
