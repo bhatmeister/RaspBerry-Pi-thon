@@ -24,7 +24,7 @@ class Home(Page):
         label.place(x=160, y=50)
         entry1 =tk.Entry(self, width=30)
         entry1.insert(0,'Enter The Server IP Address')
-        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: createSocket())
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: createSocket(entry1.get()))
         button5.place(x=300,y=195)
         entry1.place(x=235,y=137)
 

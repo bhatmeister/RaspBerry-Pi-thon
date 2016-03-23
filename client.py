@@ -2,10 +2,10 @@ import socketClass
 import time
 import config
 
-def createSocket:
+def createSocket(serverIP):
     client = socketClass.Socket()
     print "client socket created"
-    client.connect(config.serverIP,config.clientPort)
+    client.connect(serverIP,config.clientPort)
     print "connection requested"
 
 
