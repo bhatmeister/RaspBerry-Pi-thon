@@ -2,7 +2,7 @@ import Tkinter as tk
 from client import *
 import os
 
-createSocket()
+client = createSocket()
 
 def clear(entry1):
     entry1.delete(0,tk.END)
@@ -21,7 +21,7 @@ class Home(Page):
         def serveConnect(IP,Port):
             T = tk.Text(self, height=4, width=50)
             T.place(x=270, y=255)
-            connStatus = connectToSocket(IP,Port)
+            connStatus = connectToSocket(IP,Port,client)
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
             elif connStatus == 0:
@@ -52,7 +52,7 @@ class Weather(Page):
             Temp.config(text=" ")
             Status.config(text=" ")
             Humidity.config(text=" ")
-            Weather_Report=requestData(data)
+            Weather_Report=requestData(data, client)
             if Weather_Report == "0":
                 Temp.config(text="City not found", font=("Helvetica",48))
                 Temp.place(x=300, y=150)
