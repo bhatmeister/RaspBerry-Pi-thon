@@ -4,7 +4,7 @@ s = socket.socket()
 
 host = '192.168.1.48'# ip of raspberry pi
 
-port = 12345
+port = 13000
 s.connect((host, port))
 print(s.recv(1024))
 s.close()
