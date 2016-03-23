@@ -11,6 +11,7 @@ def sendReq(data):
     print data
     
 
+
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -21,17 +22,28 @@ class Home(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         Page.__init__(self, *args, **kwargs)
+        
+        def serveConnect(IP,Port):
+            T = tk.Text(self, height=4, width=30)
+            T.place(x=270, y=255)
+            if 1:
+                quote = """Connection Established Successfully"""
+            else
+                 quote = """Connection Couldn't Be Established"""
+            T.insert(tk.END, quote)
+            createSocket(IP,Port)
+        
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=160, y=50)
         IP =tk.Entry(self, width=20)
         IP.insert(0,'Enter the IP Address')
         Port =tk.Entry(self, width=20)
         Port.insert(0,'Enter the Port Number')
-        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: createSocket(IP.get(),Port.get()))
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
 
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
-        Port.place(x=375,y=137)
+        Port.place(x=360,y=137)
 
 class Weather(Page):
     def __init__(self, *args, **kwargs):
@@ -42,33 +54,33 @@ class Weather(Page):
         button5.place(x=300,y=195)
         Locn.place(x=235,y=137)
 
-class Stocks(Page):
-    def __init__(self, *args, **kwargs):
-        Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=50)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=50)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=90)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=90)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=120)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=120)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=150)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=150)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=180)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=180)
-        label = tk.Label(self, text="Stock Name")
-        label.place(x=200,y=210)
-        label = tk.Label(self, text="Value")
-        label.place(x=360,y=210)
+# class Stocks(Page):
+#     def __init__(self, *args, **kwargs):
+#         Page.__init__(self, *args, **kwargs)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=50)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=50)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=90)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=90)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=120)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=120)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=150)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=150)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=180)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=180)
+#         label = tk.Label(self, text="Stock Name")
+#         label.place(x=200,y=210)
+#         label = tk.Label(self, text="Value")
+#         label.place(x=360,y=210)
 class News(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
@@ -79,8 +91,8 @@ class News(Page):
         label.image = photo # keep a reference!
         label.place(x=0,y=15)'''
 
-        T = tk.Text(self, height=6, width=60)
-        T.place(x=240, y=25)
+        T = tk.Text(self, height=6, width=80)
+        T.place(x=0, y=25)
         quote = """HAMLET: To be, or not to be--that is the question:
         Whether 'tis nobler in the mind to suffer
         The slings and arrows of outrageous fortune
@@ -95,8 +107,8 @@ class News(Page):
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
-        T = tk.Text(self, height=6, width=60)
-        T.place(x=240, y=160)
+        T = tk.Text(self, height=6, width=80)
+        T.place(x=0, y=160)
         quote = """HAMLET: To be, or not to be--that is the question:
         Whether 'tis nobler in the mind to suffer
         The slings and arrows of outrageous fortune
@@ -111,8 +123,8 @@ class News(Page):
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
-        T = tk.Text(self, height=6, width=60)
-        T.place(x=240, y=280)
+        T = tk.Text(self, height=6, width=80)
+        T.place(x=0, y=280)
         quote = """HAMLET: To be, or not to be--that is the question:
         Whether 'tis nobler in the mind to suffer
         The slings and arrows of outrageous fortune
@@ -146,7 +158,7 @@ class MainView(tk.Frame):
 
         p1 = Home(self)
         p2 = Weather(self)
-        p3 = Stocks(self)
+        # p3 = Stocks(self)
         p4 = News(self)
 
         buttonframe = tk.Frame(self)
@@ -156,17 +168,17 @@ class MainView(tk.Frame):
 
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-        p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
+        # p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=20)
-        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=20)
-        b3 = tk.Button(buttonframe, text="Stocks", command=p3.lift,width=20)
-        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=20)
+        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=30)
+        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=30)
+        # b3 = tk.Button(buttonframe, text="Stocks", command=p3.lift,width=20)
+        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=30)
 
         b1.pack(side="left")
         b2.pack(side="left")
-        b3.pack(side="left")
+        # b3.pack(side="left")
         b4.pack(side="left")
 
         p1.show()
