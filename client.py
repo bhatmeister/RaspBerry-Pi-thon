@@ -13,9 +13,6 @@ def createSocket(serverIP,serverPort):
         return 0
 
 
-
-
-
 def requestData(userInput):
     "This function requests data from the server"
     #userInput = raw_input("Enter Location:  ")

@@ -34,16 +34,10 @@ def fetchWeather(data):
     #location_id now contains the city's code
     try:
         weatherResult = pywapi.get_weather_from_weather_com(location_id , units = 'metric')
-        returnedData = "Current Temperature in " + weatherResult["location"]["name"] + " is " + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C" + "It is " + weatherResult["current_conditions"]["text"] + "Humidity is " + weatherResult["current_conditions"]["humidity"] + "%" + "\nForecasts "
+        returnedData = "Current Temperature in " + weatherResult["location"]["name"] + " is " + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C$" + "It is " + weatherResult["current_conditions"]["text"] + "$Humidity is " + weatherResult["current_conditions"]["humidity"] + "%" + "$\nForecasts "
         for days in weatherResult["forecasts"]:
             returnedData = returnedData + days["day_of_week"] + " High " + days["high"] +  u"\u00B0" +"C  Low " + days["low"] +  u"\u00B0" + "C"
-            '''print "Current Temperature in " + weatherResult["location"]["name"] + " is " + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C"
-            print "It is " + weatherResult["current_conditions"]["text"]
-            print "Humidity is " + weatherResult["current_conditions"]["humidity"] + "%"
-            print "\nForecasts "
-            for days in weatherResult["forecasts"]:
-                print days["day_of_week"] + " High " + days["high"] +  u"\u00B0" +"C  Low " + days["low"] +  u"\u00B0" + "C"
-            '''
+
         return returnedData
     except UnboundLocalError:
         return "Error detected"
@@ -82,6 +76,12 @@ def fetchNews():
 
 
 
-
+    '''print "Current Temperature in " + weatherResult["location"]["name"] + " is " + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C"
+    print "It is " + weatherResult["current_conditions"]["text"]
+    print "Humidity is " + weatherResult["current_conditions"]["humidity"] + "%"
+    print "\nForecasts "
+    for days in weatherResult["forecasts"]:
+        print days["day_of_week"] + " High " + days["high"] +  u"\u00B0" +"C  Low " + days["low"] +  u"\u00B0" + "C"
+    '''
 #city = raw_input("Enter the name of the city\n") #for weather
 #print dataFetcher('0',city)
