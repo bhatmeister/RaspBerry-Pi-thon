@@ -16,7 +16,7 @@ print server.getHostName()
 
 def clientThreadMessenger(connection):
     while True:
-        connection.timeout(900.0)
+        connection.timeout(3600.0)
         data = connection.recieve()
         connection.timeout(None)
 
