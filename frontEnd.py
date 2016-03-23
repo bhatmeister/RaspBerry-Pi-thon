@@ -53,8 +53,10 @@ class Weather(Page):
         def sendReq(data):
             Weather_Report=requestData(data)
             Weather_Report=Weather_Report.split('$')
-            #formatted_Report=
-            print (Weather_Report[0])
+            T = tk.Text(self, height=6, width=80)
+            T.pack(side ="top", fill="x")
+            quote = """The temprature is """ +Weather_Report[0]+"""\n"""+Weather_Report[1]+"""\nHumidity is """+Weather_Report[2]+"""\n"""+Weather_Report[3]   
+            T.insert(tk.END,quote)
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
