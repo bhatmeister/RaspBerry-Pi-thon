@@ -52,8 +52,8 @@ class Weather(Page):
         Locn =tk.Entry(self, width=30)
         Locn.insert(0,'Location')
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: requestData(Locn.get()))
-        button5.place(x=300,y=195)
-        Locn.place(x=235,y=137)
+        button5.place(x=300,y=85)
+        Locn.place(x=245,y=27)
 
 # class Stocks(Page):
 #     def __init__(self, *args, **kwargs):
@@ -82,6 +82,7 @@ class Weather(Page):
 #         label.place(x=200,y=210)
 #         label = tk.Label(self, text="Value")
 #         label.place(x=360,y=210)
+
 class News(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
