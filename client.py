@@ -10,7 +10,7 @@ def createSocket():
         client.timeout(50)
         return client
     except timeout:
-        client.terminate
+        client.terminate()
 
 def connectToSocket(serverIP, serverPort, client):
     try:
