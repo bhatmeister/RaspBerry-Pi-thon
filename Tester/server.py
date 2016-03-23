@@ -1,7 +1,7 @@
 import socket
 
 s = socket.socket()
-host = '192.168.1.108' #ip of raspberry pi
+host = '192.168.1.102' #ip of raspberry pi
 port = 12345
 s.bind((host, port))
 
