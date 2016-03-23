@@ -52,6 +52,9 @@ class Weather(Page):
         Locn.insert(0,'Location')
         def sendReq(data):
             Weather_Report=requestData(data)
+            Weather_Report=Weather_Report.split('$')
+            #formatted_Report=
+            print (Weather_Report[0])
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
