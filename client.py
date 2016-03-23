@@ -2,7 +2,7 @@ import socketClass
 import time
 import config
 
-def createSocket(serverIP):
+def createSocket(serverIP,serverPort):
     client = socketClass.Socket()
     print "client socket created"
     client.connect(serverIP,config.clientPort)
