@@ -24,8 +24,11 @@ class Socket:
         return self.socket.accept()
 
     def getHostName(self):
-            #return socket.gethostname()
-            return config.serverIP
+        #return socket.gethostname()
+        return config.serverIP
+
+    def timeout(self,timeoutDuration):
+        return self.socket.timeout(timeoutDuration)
 
     # Send Data through socket
     def send(self, message):

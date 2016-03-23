@@ -16,19 +16,20 @@ print server.getHostName()
 
 def clientThreadMessenger(connection):
     while True:
-         data = client.recieve()
-         if '~' in data:
+        connection.timeout(10.0)
+        data = client.recieve()
+        if '~' in data:
              break
 
-         data = data.split('#')
+        data = data.split('#')
 
-         print(data)
+        print(data)
 
-         returnData = dataFetcher(data[0], data[1])
-         currentTime = time.ctime(time.time())+"\r\n"
+        returnData = dataFetcher(data[0], data[1])
+        currentTime = time.ctime(time.time())+"\r\n"
 
-         print "Sent Data"
-         client.send(returnData.encode('utf8'))
+        print "Sent Data"
+        client.send(returnData.encode('utf8'))
 
 while True:
     (clientData,(ip,port)) = server.accept()
