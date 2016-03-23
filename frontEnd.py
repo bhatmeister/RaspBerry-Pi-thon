@@ -31,9 +31,9 @@ class Home(Page):
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=160, y=50)
         IP =tk.Entry(self, width=20)
-        IP.insert(0,'Enter the IP Address')
+        IP.insert(0,'192.168.1.48')
         Port =tk.Entry(self, width=20)
-        Port.insert(0,'Enter the Port Number')
+        Port.insert(0,'12345')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
@@ -86,9 +86,9 @@ class Weather(Page):
                 Forecast3.config(text=" ")
                 Forecast4.config(text=" ")
                 Forecast5.config(text=" ")
-                
-                
-                
+
+
+
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
