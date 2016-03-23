@@ -24,7 +24,7 @@ class Home(Page):
         Page.__init__(self, *args, **kwargs)
 
         def serveConnect(IP,Port):
-            T = tk.Text(self, height=4, width=30)
+            T = tk.Text(self, height=4, width=50)
             T.place(x=270, y=255)
             connStatus = createSocket(IP,Port)
             if connStatus == 1:
