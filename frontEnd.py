@@ -57,7 +57,7 @@ class Weather(Page):
             Humidity.config(text=" ")
             Weather_Report=requestData(data)
             if Weather_Report == "0":
-                Temp.config(self,text="City not found", font=("Helvetica",48))
+                Temp.config(text="City not found", font=("Helvetica",48))
                 Temp.place(x=300, y=150)
             else:
                 Weather_Report=Weather_Report.split('$')
