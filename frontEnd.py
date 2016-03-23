@@ -52,7 +52,7 @@ class Weather(Page):
         Status=tk.Label(self,text=" ")
         Humidity=tk.Label(self, text=" ")
         def sendReq(data):
-            Temp=.config(self,text=" )
+            Temp.config(self,text=" ")
             Status.config(self,text=" ")
             Humidity.config(self, text=" ")
             Weather_Report=requestData(data)
@@ -61,14 +61,14 @@ class Weather(Page):
                 Temp.place(x=300, y=150)
             else:
                 Weather_Report=Weather_Report.split('$')
-                Temp=.config(self,text=Weather_Report[0], font=("Helvetica",48))
+                Temp.config(self,text=Weather_Report[0], font=("Helvetica",48))
                 Temp.place(x=300, y=150)
                 Status.config(self,text=Weather_Report[1], font=("Helvetica",24))
                 Status.place(x=300, y=200)
                 Humidity.config(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
                 Humidity.place(x=100, y=240)
                 Weather_Report[3]=Weather_Report[3].split('^')
-    
+
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
