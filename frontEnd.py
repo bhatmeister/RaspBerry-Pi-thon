@@ -3,7 +3,11 @@ from client import *
 import os
 
 
+<<<<<<< HEAD
 os.system("python client.py")
+=======
+
+>>>>>>> origin/master
 def clear(entry1):
     entry1.delete(0,tk.END)
 
