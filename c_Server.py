@@ -20,7 +20,7 @@ def clientthread(conn):
          print("Got a connection from %s" %str(ip)) #send only takes string
 #Receiving from client
          #data = conn.recv(1024) # 1024 stands for bytes of data to be received
-         data = client.recieve()
+         data = conn.recieve()
          print '4'
          if '~' in data:
              break
@@ -36,12 +36,7 @@ def clientthread(conn):
          print "Sent Data"
          client.send(returnData.encode('utf8'))
          print data
-'''while True:
-#Accepting incoming connections
-    conn, addr = sock.accept()
-#Creating new thread. Calling clientthread function for this function and passing conn as argument.
-    start_new_thread(clientthread,(conn,)) #start new thread takes 1st argument as a function name to be run, second is the tuple of arguments to the function.
-    '''
+
 while True:
     (clientData,(ip,port)) = server.accept()
     client = socketClass.Socket(clientData)

@@ -1,4 +1,3 @@
-
 import socketClass
 import time
 import config
@@ -9,9 +8,7 @@ print "client socket created"
 client.connect(config.serverIP,config.clientPort)
 print "connection requested"
 
-'''def requestData():
-    "This function requests data from the server"
-    userInput = sendReq()'''
+
 
 
 def requestData(userInput):
