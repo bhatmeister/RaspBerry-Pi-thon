@@ -50,7 +50,7 @@ class Weather(Page):
         Locn.insert(0,'Location')
         def sendReq(data):
             Weather_Report=requestData(data)
-            if Weather_Report == 0:
+            if Weather_Report == "0":
                 Temp=tk.Label(self,text="City not found", font=("Helvetica",48))
                 Temp.place(x=300, y=150)
             else:

@@ -41,7 +41,7 @@ def fetchWeather(data):
         return returnedData
     except UnboundLocalError:
         print "City does not exist"
-        return 0
+        return "0"
         # + str(UnboundLocalError) + "\n"
 
 
