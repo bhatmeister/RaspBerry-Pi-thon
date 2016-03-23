@@ -9,7 +9,7 @@ def clear(entry1):
     entry1.delete(0,tk.END)
 def sendReq(data):
     print data
-    
+
 
 
 class Page(tk.Frame):
@@ -22,17 +22,18 @@ class Home(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         Page.__init__(self, *args, **kwargs)
-        
+
         def serveConnect(IP,Port):
             T = tk.Text(self, height=4, width=30)
             T.place(x=270, y=255)
-            if 1:
+            connStatus = createSocket(IP,Port)
+            if connStatus == 1:
                 quote = """Connection Established Successfully"""
-            else
-                 quote = """Connection Couldn't Be Established"""
+            elif connStatus == 0:
+                quote = """Connection Couldn't Be Established"""
             T.insert(tk.END, quote)
-            createSocket(IP,Port)
-        
+
+
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=160, y=50)
         IP =tk.Entry(self, width=20)
