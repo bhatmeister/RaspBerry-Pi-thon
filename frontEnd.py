@@ -49,6 +49,9 @@ class Weather(Page):
         Locn =tk.Entry(self, width=30)
         Locn.insert(0,'Location')
         def sendReq(data):
+            Temp.destroy()
+            Status.destroy()
+            Humidity.destroy()  
             Weather_Report=requestData(data)
             if Weather_Report == "0":
                 Temp=tk.Label(self,text="City not found", font=("Helvetica",48))
@@ -62,9 +65,6 @@ class Weather(Page):
                 Humidity=tk.Label(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
                 Humidity.place(x=100, y=240)
                 Weather_Report[3]=Weather_Report[3].split('^')
-                Temp.destroy()
-                Status.destroy()
-                Humidity.destroy()        
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
