@@ -9,8 +9,8 @@ def createSocket():
         print "socket created"
         client.timeout(50)
         return client
-    except timeout:
-        client.terminate
+    except socket.error as socketerror:
+        client.terminate()
 
 def connectToSocket(serverIP, serverPort, client):
     try:
