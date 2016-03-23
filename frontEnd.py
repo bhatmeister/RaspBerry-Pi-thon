@@ -19,8 +19,14 @@ class Page(tk.Frame):
 class Home(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        label = tk.Label(self, text="Welcome to raspberry.py", font=("Helvetica",28))
-        label.pack(side="top", fill="both", expand=True)
+        Page.__init__(self, *args, **kwargs)
+        label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
+        label.place(x=160, y=50)
+        entry1 =tk.Entry(self, width=30)
+        entry1.insert(0,'Enter The Server IP Address')
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: requestData(entry1.get()))
+        button5.place(x=300,y=195)
+        entry1.place(x=235,y=137))
 
 class Weather(Page):
     def __init__(self, *args, **kwargs):
