@@ -6,8 +6,9 @@ import socket
 def createSocket():
     client = socketClass.Socket()
     print "socket created"
-    client.timeout(50)
-    
+    client.timeout(10)
+    client.terminate
+
 def connectToSocket(serverIP,serverPort):
     try:
         client.connect(serverIP,config.clientPort)
