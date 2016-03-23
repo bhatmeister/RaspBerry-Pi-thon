@@ -3,11 +3,9 @@ import time
 import config
 import socket
 
-client = socketClass.Socket()
-
 def createSocket():
     try:
-        
+        client = socketClass.Socket()
         print "socket created"
         client.timeout(50)
         return client
