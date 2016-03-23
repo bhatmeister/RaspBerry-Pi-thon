@@ -1,20 +1,23 @@
+
 #Server.py
 import time
 import socketClass
 import config
-from fetchData import 
+from fetchData import *
 from thread import *
 
 server = socketClass.Socket()
 server.bind(server.getHostName(), config.serverPort)
+
+server.listen(5)
 
 print "Server Listening at"
 print server.getHostName()
 
 def clientThreadMessenger(connection):
     while True:
-        connection.send('Connected to Server')
-        clientData = connection.recieve(1024)
+        #connection.send('Connected to Server')
+        clientData = connection.recieve()
         print clientData
 
 while True:
@@ -24,6 +27,8 @@ while True:
     print("Got a connection from %s" %str(ip))
 
     start_new_thread(clientThreadMessenger,(client,))
+
+
 
 
 
