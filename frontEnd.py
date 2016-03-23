@@ -49,20 +49,20 @@ class Weather(Page):
         Status=tk.Label(self,text=" ")
         Humidity=tk.Label(self, text=" ")
         def sendReq(data):
-            Temp.config(self,text=" ")
-            Status.config(self,text=" ")
-            Humidity.config(self, text=" ")
+            Temp.config(text=" ")
+            Status.config(text=" ")
+            Humidity.config(text=" ")
             Weather_Report=requestData(data)
             if Weather_Report == "0":
-                Temp.config(self,text="City not found", font=("Helvetica",48))
+                Temp.config(text="City not found", font=("Helvetica",48))
                 Temp.place(x=300, y=150)
             else:
                 Weather_Report=Weather_Report.split('$')
-                Temp.config(self,text=Weather_Report[0], font=("Helvetica",48))
+                Temp.config(text=Weather_Report[0], font=("Helvetica",48))
                 Temp.place(x=300, y=150)
-                Status.config(self,text=Weather_Report[1], font=("Helvetica",24))
+                Status.config(text=Weather_Report[1], font=("Helvetica",24))
                 Status.place(x=300, y=200)
-                Humidity.config(self, text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
+                Humidity.config(text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
                 Humidity.place(x=100, y=240)
                 Weather_Report[3]=Weather_Report[3].split('^')
 
