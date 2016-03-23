@@ -26,7 +26,7 @@ class Home(Page):
         IP.insert(0,'Enter The Server IP Address')
         Port =tk.Entry(self, width=30)
         Port.insert(0,'Enter The Server IP Port Number')
-        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: createSocket(IP.get()))
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: createSocket(IP.get(),Port.get()))
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
         Port.place(x=245,y=137)
