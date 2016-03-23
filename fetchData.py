@@ -60,28 +60,5 @@ def fetchNews():
 
 
 
-'''def fetchStock(data):
-    "This function fetches the stock details"
-    response = urllib2.urlopen(config.stocksLink)
-    htmlPage = response.read()
-
-    soup = BeautifulSoup(htmlPage,"html.parser")
-    table = soup.find('table',class_="quotes")
-    tbody = table.find('tbody')
-    stocks = str((tbody.find('tr')).find('td').text).split()
-    for i in range(0,15,3):
-        print stocks[i]
-        print stocks[i+1]
-        print stocks[i+2]'''
-
-
-
-    '''print "Current Temperature in " + weatherResult["location"]["name"] + " is " + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C"
-    print "It is " + weatherResult["current_conditions"]["text"]
-    print "Humidity is " + weatherResult["current_conditions"]["humidity"] + "%"
-    print "\nForecasts "
-    for days in weatherResult["forecasts"]:
-        print days["day_of_week"] + " High " + days["high"] +  u"\u00B0" +"C  Low " + days["low"] +  u"\u00B0" + "C"
-    '''
 #city = raw_input("Enter the name of the city\n") #for weather
 #print dataFetcher('0',city)
