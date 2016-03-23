@@ -7,8 +7,7 @@ import os
 os.system("python client.py")
 def clear(entry1):
     entry1.delete(0,tk.END)
-def sendReq(data):
-    print data
+
 
 
 
@@ -41,7 +40,7 @@ class Home(Page):
         Port =tk.Entry(self, width=20)
         Port.insert(0,'Enter the Port Number')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
-        IP.bind('<1>', clear(IP))
+        # IP.bind('<1>', clear(IP))
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
         Port.place(x=360,y=137)
@@ -51,7 +50,9 @@ class Weather(Page):
         Page.__init__(self, *args, **kwargs)
         Locn =tk.Entry(self, width=30)
         Locn.insert(0,'Location')
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: requestData(Locn.get()))
+        def sendReq(data):
+            Weather_Report=requestData(data)
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
         Locn.place(x=245,y=27)
 
