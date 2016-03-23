@@ -4,7 +4,8 @@ import config
 import socket
 
 client = socketClass.Socket()
-client.timeout(5)
+print "socket created"
+client.timeout(50)
 def createSocket(serverIP,serverPort):
     try:
         client.connect(serverIP,config.clientPort)
