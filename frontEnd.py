@@ -9,6 +9,7 @@ def clear(entry1):
     entry1.delete(0,tk.END)
 def sendReq(data):
     print data
+    
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -37,7 +38,7 @@ class Home(Page):
 >>>>>>> origin/master
         button5.place(x=300,y=195)
         IP.place(x=205,y=137)
-        Port.place(x=355,y=137)
+        Port.place(x=375,y=137)
 
 class Weather(Page):
     def __init__(self, *args, **kwargs):
