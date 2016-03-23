@@ -42,11 +42,11 @@ class Home(Page):
 class Weather(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        entry1 =tk.Entry(self, width=30)
-        entry1.insert(0,'Location')
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: requestData(entry1.get()))
+        Locn =tk.Entry(self, width=30)
+        Locn.insert(0,'Location')
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: requestData(Locn.get()))
         button5.place(x=300,y=195)
-        entry1.place(x=235,y=137)
+        Locn.place(x=235,y=137)
 
 class Stocks(Page):
     def __init__(self, *args, **kwargs):
