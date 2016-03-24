@@ -3,15 +3,7 @@ import time
 import config
 import socket
 
-def createSocket():
-    try:
-        client = socketClass.Socket()
-        print "socket created"
-        client.timeout(50)
-        return client
-
 global client
-
 
 def createSocket():
     global client
