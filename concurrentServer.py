@@ -11,7 +11,11 @@ import sys
 server = socketClass.Socket()
 print "Socker Created"
 
-server.bind(server.getHostName(), config.serverPort)
+try:
+    server.bind(server.getHostName(), config.serverPort)
+except:
+    print 'Bind failed 
+    sys.exit()
 
 print "Socket Bind Completed"
 
