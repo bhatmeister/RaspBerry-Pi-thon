@@ -14,7 +14,7 @@ print "Socker Created"
 try:
     server.bind(server.getHostName(), config.serverPort)
 except:
-    print 'Bind failed 
+    print 'Bind failed' 
     sys.exit()
 
 print "Socket Bind Completed"
