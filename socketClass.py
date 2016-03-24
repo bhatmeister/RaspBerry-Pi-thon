@@ -32,17 +32,11 @@ class Socket:
 
     # Send Data through socket
     def send(self, message):
-        totalSent = 0
-        sent = self.socket.send(message)
-        if sent == 0:
-            raise RuntimeError("Socket Connection Broken")
+        self.socket.send(message)
             
     # Recieve data from socket
     def recieve(self):
-        chunks = []
         chunk = self.socket.recv(config.MSGLEN)
-        if chunk is None:
-            raise RuntimeError("Socket connection Broken")
         return chunk
 
     # Close socket

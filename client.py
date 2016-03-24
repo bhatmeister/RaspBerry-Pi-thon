@@ -3,7 +3,9 @@ import time
 import config
 import socket
 
+
 global client
+
 
 def createSocket():
     global client
