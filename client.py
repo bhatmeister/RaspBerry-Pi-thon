@@ -7,7 +7,7 @@ def createSocket():
     try:
         client = socketClass.Socket()
         print "socket created"
-        client.timeout(5)
+        client.timeout(50)
         return client
 
     except socket.error as socketerror:
