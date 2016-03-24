@@ -10,20 +10,29 @@ def createSocket():
         client.timeout(50)
         return client
 
-    except socket.error as socketerror:
-        client.terminate()
+global client
 
-def connectToSocket(serverIP, serverPort, client):
+
+def createSocket():
+    global client
+    client = socketClass.Socket()
+    print "socket created"
+    client.timeout(5)
+
+def connectToSocket(serverIP, serverPort):
+    global client
     try:
         client.connect(serverIP,config.clientPort)
         return 1
     except socket.error, exc:
         print exc
+        client.terminate()
         return 0
 
 
-def requestData(userInput, client):
+def requestData(userInput):
     "This function requests data from the server"
+    global client
     #userInput = raw_input("Enter Location:  ")
     client.send('0#' + userInput)
     data = client.recieve()

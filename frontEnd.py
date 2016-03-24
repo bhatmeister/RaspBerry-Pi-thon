@@ -2,7 +2,7 @@ import Tkinter as tk
 from client import *
 import os
 
-client = createSocket()
+createSocket()
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -19,19 +19,20 @@ class Home(Page):
             T = tk.Text(self, height=4, width=50)
             T.place(x=270, y=255)
 
-            connStatus = connectToSocket(IP,Port,client)
+            connStatus = connectToSocket(IP,Port)
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
+                createSocket()
             T.insert(tk.END, quote)
 
 
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=160, y=50)
         IP =tk.Entry(self, width=20)
-        IP.insert(0,'192.168.1.48')
+        IP.insert(0,'192.168.1.101')
         Port =tk.Entry(self, width=20)
         Port.insert(0,'12345')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
@@ -57,7 +58,7 @@ class Weather(Page):
             Status.config(text=" ")
             Humidity.config(text=" ")
 
-            Weather_Report=requestData(data, client)
+            Weather_Report=requestData(data)
 
             Forecast.config(text=" ")
             Forecast2.config(text=" ")
