@@ -13,7 +13,7 @@ print "Socker Created"
 
 try:
     server.bind(server.getHostName(), config.serverPort)
-except socket.error as message
+except socket.error as message:
     print 'Bind failed .Error Code : ' + str(message[0]) + 'Message ' + message[1]
     sys.exit()
 
