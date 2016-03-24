@@ -3,9 +3,7 @@ import time
 import config
 import socket
 
-
 global client
-
 
 def createSocket():
     global client
@@ -16,7 +14,9 @@ def createSocket():
 def connectToSocket(serverIP, serverPort):
     global client
     try:
+        print "Connceting to " + str(serverIP) + ":" + str(serverPort)
         client.connect(serverIP,config.clientPort)
+        print "Conncected"
         return 1
     except socket.error, exc:
         print exc
