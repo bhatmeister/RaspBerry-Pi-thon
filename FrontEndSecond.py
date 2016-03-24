@@ -11,26 +11,32 @@ class Application(tk.Frame):
         createSocket()
 
         def establishConnection(ip,port):
-            statusLabel = tk.Text(self).grid(row=5,column =2)
-        
+            
             if connectToSocket(ip,port):
-                statusLabel.insert(tk.END,"Connection Established ")
+                statusLabel = tk.Label(self,text = 'Connected to Py Server').grid(row=5,column=2)
+                
             else:
-                statusLabel.insert(tk.END,"Connection Not Established ")
+                statusLabel = tk.Label(self,text = 'Could Not Connect to Py Server').grid(row=5,column=2)
                 createSocket()
 
         def terminateConnection():
             return 1
 
-        welcomeLabel = tk.Label(self,text = 'Welcome to RaspBerry.py').grid(row=0,column=1)
-        clientLabel = tk.Label(self,text = 'Enter Ip and Port to connect').grid(row=1,column=2)
+        top = self.winfo_toplevel()
+        top.rowconfigure(0,weight=1)
+        top.columnconfigure(0,weight=1)
+        self.rowconfigure(0,weight=1)
+        self.columnconfigure(0,weight=1)
+
+        welcomeLabel = tk.Label(self,text = 'Welcome to RaspBerry.py').pack(side=TOP)
+        clientLabel = tk.Label(self,text = 'Enter Ip and Port to connect').pack(side=TOP)
 
         ipLabel = tk.Label(self,text = 'Server IP:').grid(row=3,column=1)
-        ipInput = tk.Entry(self, width = 20)
+        ipInput = tk.Entry(self, width = 15)
         ipInput.grid(row=3,column=2)
 
         portLabel = tk.Label(self,text = 'Server Port:').grid(row=3,column=3)
-        portInput = tk.Entry(self, width = 5)
+        portInput = tk.Entry(self, width = 15)
         portInput.grid(row=3,column=4)
 
         connectButton = tk.Button(self, text="Connect",command=lambda: establishConnection(ipInput.get(),portInput.get())).grid(row=4,column=2)

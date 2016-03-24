@@ -17,7 +17,7 @@ class Home(Page):
 
         def serveConnect(IP,Port):
             T = tk.Text(self, height=4, width=50)
-            T.place(x=270, y=255)
+            T.place(x=210, y=255)
 
             connStatus = connectToSocket(IP,Port)
 
@@ -30,14 +30,14 @@ class Home(Page):
 
 
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
-        label.place(x=160, y=50)
-        IP =tk.Entry(self, width=20)
+        label.place(x=140, y=50)
+        IP =tk.Entry(self, width=15)
         IP.insert(0,'192.168.1.101')
-        Port =tk.Entry(self, width=20)
+        Port =tk.Entry(self, width=6)
         Port.insert(0,'12345')
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
-        button5.place(x=300,y=195)
-        IP.place(x=205,y=137)
+        button5.place(x=270,y=215)
+        IP.place(x=210,y=137)
         Port.place(x=360,y=137)
 
 class Weather(Page):
@@ -185,9 +185,9 @@ class MainView(tk.Frame):
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=30)
-        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=30)
-        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=30)
+        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=22)
+        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=22)
+        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=22)
 
         b1.pack(side="left")
         b2.pack(side="left")

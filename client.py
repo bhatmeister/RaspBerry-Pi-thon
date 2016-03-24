@@ -9,7 +9,7 @@ def createSocket():
     global client
     client = socketClass.Socket()
     print "socket created"
-    client.timeout(5)
+    client.timeout(50)
 
 def connectToSocket(serverIP, serverPort):
     global client
