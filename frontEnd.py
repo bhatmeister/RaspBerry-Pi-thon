@@ -64,7 +64,7 @@ class Weather(Page):
             Status.config(text=" ")
             Humidity.config(text=" ")
 
-            Weather_Report=requestData(data)
+            Weather_Report=requestData('0',data)
 
             Forecast.config(text=" ")
             Forecast2.config(text=" ")
@@ -106,90 +106,53 @@ class News(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
 
-        '''image= Image.open("download (1).jpeg")
-        photo=ImageTk.PhotoImage(image)
-        label = tk.Label(self,image=photo, height=75, width=175)
-        label.image = photo # keep a reference!
-        label.place(x=0,y=15)'''
 
+        quote=requestData('1',"")
+        quote=quote.split("$")
         T = tk.Text(self, height=6, width=80)
         T.place(x=0, y=25)
-        quote = """HAMLET: To be, or not to be--that is the question:
-        Whether 'tis nobler in the mind to suffer
-        The slings and arrows of outrageous fortune
-        Or to take arms against a sea of troubles
-        And by opposing end them. To die, to sleep--
-        No more--and by a sleep to say we end
-        The heartache, and the thousand natural shocks
-        That flesh is heir to. 'Tis a consummation
-        Devoutly to be wished."""
-        T.insert(tk.END, quote)
+        T.insert(tk.END, quote[0])
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
         T = tk.Text(self, height=6, width=80)
         T.place(x=0, y=160)
-        quote = """HAMLET: To be, or not to be--that is the question:
-        Whether 'tis nobler in the mind to suffer
-        The slings and arrows of outrageous fortune
-        Or to take arms against a sea of troubles
-        And by opposing end them. To die, to sleep--
-        No more--and by a sleep to say we end
-        The heartache, and the thousand natural shocks
-        That flesh is heir to. 'Tis a consummation
-        Devoutly to be wished."""
-        T.insert(tk.END, quote)
+
+        T.insert(tk.END, quote[1])
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
 
         T = tk.Text(self, height=6, width=80)
         T.place(x=0, y=280)
-        quote = """HAMLET: To be, or not to be--that is the question:
-        Whether 'tis nobler in the mind to suffer
-        The slings and arrows of outrageous fortune
-        Or to take arms against a sea of troubles
-        And by opposing end them. To die, to sleep--
-        No more--and by a sleep to say we end
-        The heartache, and the thousand natural shocks
-        That flesh is heir to. 'Tis a consummation
-        Devoutly to be wished."""
-        T.insert(tk.END, quote)
+
+        T.insert(tk.END, quote[2])
         scroll = tk.Scrollbar(self, command=T.yview)
         T.configure(yscrollcommand=scroll.set)
         scroll.pack(side=tk.RIGHT, fill=tk.Y)
-
-    '''    image= Image.open("download (1).jpeg")
-        photo=ImageTk.PhotoImage(image)
-        label = tk.Label(self,image=photo, height=75, width=175)
-        label.image = photo # keep a reference!
-        label.place(x=0,y=150)
-        image= Image.open("download (1).jpeg")
-        photo=ImageTk.PhotoImage(image)
-        label = tk.Label(self,image=photo, height=75, width=175)
-        label.image = photo # keep a reference!
-        label.place(x=0,y=285)'''
 
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
 
-
+        
         p1 = Home(self)
         p2 = Weather(self)
         # p3 = Stocks(self)
         p4 = News(self)
-
+            
         buttonframe = tk.Frame(self)
         container = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
         
+        def serveNews():
+            p4.lift
         b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=28)
         b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=28)
-        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=28)
+        b4 = tk.Button(buttonframe, text="News", command=serveNews(),width=28)
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
