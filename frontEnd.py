@@ -4,6 +4,8 @@ import os
 
 createSocket()
 
+
+
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -15,7 +17,7 @@ class Home(Page):
         Page.__init__(self, *args, **kwargs)
         Page.__init__(self, *args, **kwargs)
 
-        def serveConnect(IP,Port):
+        def serveConnect(IP,Port,button5):
             T = tk.Text(self, height=4, width=50)
             T.place(x=210, y=255)
 
@@ -23,6 +25,10 @@ class Home(Page):
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
+                # b1.config(state=tk.ENABLED)
+                # b2.config(state=tk.ENABLED)                
+                # b3.config(state=tk.ENABLED)   
+                button5.config(state=tk.DISABLED)        
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
                 createSocket()
@@ -33,12 +39,12 @@ class Home(Page):
         label.place(x=140, y=50)
         IP =tk.Entry(self, width=15)
         IP.insert(0,'192.168.1.101')
-        Port =tk.Entry(self, width=6)
+        Port =tk.Entry(self, width=15)
         Port.insert(0,'12345')
-        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get()))
-        button5.place(x=270,y=215)
-        IP.place(x=210,y=137)
-        Port.place(x=360,y=137)
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get(),button5))
+        button5.place(x=290,y=180)
+        IP.place(x=220,y=137)
+        Port.place(x=340,y=137)
 
 class Weather(Page):
     def __init__(self, *args, **kwargs):
@@ -180,14 +186,14 @@ class MainView(tk.Frame):
         container = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
-
+        
+        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=28)
+        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=28)
+        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=28)
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
 
-        b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=22)
-        b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=22)
-        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=22)
 
         b1.pack(side="left")
         b2.pack(side="left")
