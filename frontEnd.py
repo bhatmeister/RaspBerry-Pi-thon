@@ -30,7 +30,6 @@ class Home(Page):
                 # b1.config(state=tk.ENABLED)
                 # b2.config(state=tk.ENABLED)                
                 # b3.config(state=tk.ENABLED)   
-                button5.config(state=tk.DISABLED)     
                 global newsQuote
                 newsQuote=requestData('1'," ")   
                 
@@ -113,7 +112,7 @@ class News(Page):
 
 
         global newsQuote
-        
+        global connStatus
         
      
         T1 = tk.Text(self, height=6, width=80)
