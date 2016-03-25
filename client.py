@@ -6,12 +6,14 @@ import socket
 global client
 
 def createSocket():
+    "This function creates the socket"
     global client
     client = socketClass.Socket()
     print "socket created"
     client.timeout(50)
 
 def connectToSocket(serverIP, serverPort):
+    "This function connects to socket"
     global client
     try:
         print "Connceting to " + str(serverIP) + ":" + str(serverPort)
@@ -24,11 +26,11 @@ def connectToSocket(serverIP, serverPort):
         return 0
 
 
-def requestData(userInput):
+def requestData(type,userInput):
     "This function requests data from the server"
     global client
     #userInput = raw_input("Enter Location:  ")
-    client.send('0#' + userInput)
+    client.send(str(type) + '#' + userInput)
     data = client.recieve()
     print data + "\n"
     return data

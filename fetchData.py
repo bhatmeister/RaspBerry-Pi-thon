@@ -18,9 +18,7 @@ def dataFetcher(type,data):
     if type == '0':
         rData = fetchWeather(data)
     elif type == '1':
-        fetchNews()
-    elif type == '2':
-        fetchStock(data)
+        rData = fetchNews()
     return rData
 
 def fetchWeather(data):
@@ -51,7 +49,7 @@ def fetchWeather(data):
 
 
 def fetchNews():
-    "This function fetches top 5 news stories"
+    "This function fetches top 3 news stories"
     response = urllib2.urlopen(config.newsLink)
     htmlPage = response.read()
 
@@ -59,8 +57,10 @@ def fetchNews():
     topStories = (soup.find(class_="section-content")).find_all_next(class_="blended-wrapper",limit = 3)
     for data in topStories:
         print "HEADLINE\n" + data.find(class_ = "titletext").text
+        returnedData = str(data.find(class_ = "titletext").text)
         print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-
+        returnedData = returnedData + "$" + str(data.find(class_ = "esc-lead-snippet-wrapper").text)
+    return returnedData
 
 
 
