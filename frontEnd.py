@@ -87,12 +87,12 @@ class Weather(Page):
                 Forecast3.config(text=" ")
                 Forecast4.config(text=" ")
                 Forecast5.config(text=" ")
-                
-                
-                
+
+
+
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
         button5.place(x=300,y=85)
-        Locn.place(x=245,y=27)
+        Locn.place(x=200,y=27)
 
 
 
