@@ -12,5 +12,6 @@ serverPort = 12345
 
 # Client
 clientPort = 12345
+
 # ServerIP
 serverIP = '100.96.71.216'
