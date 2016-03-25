@@ -13,4 +13,4 @@ serverPort = 12345
 # Client
 clientPort = 12345
 # ServerIP
-serverIP = '100.96.71.216'
+serverIP = '100.77.79.38'
