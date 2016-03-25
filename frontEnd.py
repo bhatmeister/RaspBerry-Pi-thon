@@ -5,7 +5,7 @@ import os
 createSocket()
 
 
-newsQuote="0"
+newsQuote='''No News Fetched Yet'''
 connStatus=0
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -27,9 +27,6 @@ class Home(Page):
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
-                # b1.config(state=tk.ENABLED)
-                # b2.config(state=tk.ENABLED)                
-                # b3.config(state=tk.ENABLED)      
                 
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
@@ -119,10 +116,27 @@ class News(Page):
         Page.__init__(self, *args, **kwargs)
 
 
-        global newsQuote
-        global connStatus
-        
-     
+        def newsReport():
+            global connStatus
+            if connStatus == 1: 
+                newsQuote=requestData('1'," ")
+                print newsQuote  
+                newsQuote=newsQuote.split('$')
+                T1.insert(tk.END, newsQuote[0])
+                scroll = tk.Scrollbar(self, command=T1.yview)
+                T1.configure(yscrollcommand=scroll.set, state=tk.DISABLED)
+                scroll.pack(side=tk.RIGHT, fill=tk.Y)
+                T2.insert(tk.END, newsQuote[1])
+                scroll = tk.Scrollbar(self, command=T2.yview)
+                T2.configure(yscrollcommand=scroll.set, state=tk.DISABLED)
+                scroll.pack(side=tk.RIGHT, fill=tk.Y)
+                T3.insert(tk.END, newsQuote[2])
+                scroll = tk.Scrollbar(self, command=T3.yview)
+                T3.configure(yscrollcommand=scroll.set, state=tk.DISABLED)
+                scroll.pack(side=tk.RIGHT, fill=tk.Y)
+            
+        refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
+        refresh.place(x=570,y=-70)     
         T1 = tk.Text(self, height=6, width=80)
         T1.place(x=0, y=25)
         T2 = tk.Text(self, height=6, width=80)
@@ -130,34 +144,18 @@ class News(Page):
         T3 = tk.Text(self, height=6, width=80)
         T3.place(x=0, y=280)
         
-        T1.insert(tk.END, newsQuote[0])
+        T1.insert(tk.END, newsQuote)
         scroll = tk.Scrollbar(self, command=T1.yview)
         T1.configure(yscrollcommand=scroll.set)
-        scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        T2.insert(tk.END, newsQuote[0])
+        T2.insert(tk.END, newsQuote)
         scroll = tk.Scrollbar(self, command=T2.yview)
         T2.configure(yscrollcommand=scroll.set)
-        scroll.pack(side=tk.RIGHT, fill=tk.Y)
-        T3.insert(tk.END, newsQuote[0])
+        T3.insert(tk.END, newsQuote)
         scroll = tk.Scrollbar(self, command=T3.yview)
         T3.configure(yscrollcommand=scroll.set)
-        scroll.pack(side=tk.RIGHT, fill=tk.Y)
         
-    def newsReport(argg):
-      if connStatus == 1:   
-            newsQuote=newsQuote.split('$')
-            T1.insert(tk.END, newsQuote[0])
-            scroll = tk.Scrollbar(self, command=T1.yview)
-            T1.configure(yscrollcommand=scroll.set)
-            scroll.pack(side=tk.RIGHT, fill=tk.Y)
-            T2.insert(tk.END, newsQuote[1])
-            scroll = tk.Scrollbar(self, command=T2.yview)
-            T2.configure(yscrollcommand=scroll.set)
-            scroll.pack(side=tk.RIGHT, fill=tk.Y)
-            T3.insert(tk.END, newsQuote[2])
-            scroll = tk.Scrollbar(self, command=T3.yview)
-            T3.configure(yscrollcommand=scroll.set)
-            scroll.pack(side=tk.RIGHT, fill=tk.Y)        
+        
+            
 
 
 class MainView(tk.Frame):
@@ -174,16 +172,10 @@ class MainView(tk.Frame):
         buttonframe.pack(side="top", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
         
-        def serveNews():
-            global newsQuote
-            #newsQuote=requestData('1'," ")
-            tk.N=News()
-            tk.N.newsReport()
-            p4.lift
             
         b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=28)
         b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=28)
-        b4 = tk.Button(buttonframe, text="News", command=serveNews(),width=28)
+        b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=28)
         p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
         p4.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
