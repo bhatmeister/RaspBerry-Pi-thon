@@ -49,7 +49,7 @@ class Home(Page):
 class Weather(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        Locn =tk.Entry(self, width=30)
+        Locn =tk.Entry(self, width=25)
         Locn.insert(0,'Location')
         Temp=tk.Label(self,text=" ",font=("Helvetica",48))
         
@@ -84,27 +84,27 @@ class Weather(Page):
             else:
                 Weather_Report=Weather_Report.split('$')
                 Temp.config(text=Weather_Report[0], font=("Helvetica",48))
-                Temp.place(x=280, y=122)
+                Temp.place(x=280, y=82)
                 Status.config(text=Weather_Report[1], font=("Helvetica",24))
-                Status.place(x=280, y=172)
+                Status.place(x=280, y=132)
                 Humidity.config(text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
-                Humidity.place(x=280, y=212)
+                Humidity.place(x=260, y=182)
                 Weather_Report[3]=Weather_Report[3].split('^')
                 Weather_Report[4]=Weather_Report[4].split('^')
                 Weather_Report[5]=Weather_Report[5].split('^')
                 Weather_Report[6]=Weather_Report[6].split('^')
                 Weather_Report[7]=Weather_Report[7].split('^')
-                Forecast.config(text="      "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
-                Forecast.place(x=70, y=252)     
-                Forecast2.config(text=" MaxTemp:      "+Weather_Report[3][1]+"           "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"           "+Weather_Report[7][1],font=("Helvetica",12))
-                Forecast2.place(x=70, y=302)
-                Forecast3.config(text=" MinTemp:      "+Weather_Report[3][2]+"           "+Weather_Report[4][2]+"           "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"           "+Weather_Report[7][2],font=("Helvetica",12))
-                Forecast3.place(x=70, y=342)
+                Forecast.config(text="       "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
+                Forecast.place(x=165, y=212)     
+                Forecast2.config(text=" MaxTemp:           "+Weather_Report[3][1]+"           "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"             "+Weather_Report[7][1],font=("Helvetica",12))
+                Forecast2.place(x=92, y=252)
+                Forecast3.config(text=" MinTemp:           "+Weather_Report[3][2]+"           "+Weather_Report[4][2]+"           "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"             "+Weather_Report[7][2],font=("Helvetica",12))
+                Forecast3.place(x=92, y=282)
 
 
 
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
-        button5.place(x=300,y=65)
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=5, command=lambda: sendReq(Locn.get()))
+        button5.place(x=410,y=27)
         Locn.place(x=225,y=27)
 
 
@@ -124,24 +124,17 @@ class News(Page):
                 T3.config(state=tk.NORMAL)
                 T3.delete('1.0', tk.END)
                 newsQuote=requestData('1'," ")
-                print newsQuote  
-                                                
                 newsQuote=newsQuote.split('$')
+                
                 T1.insert(tk.END, newsQuote[0])
-                # scroll = tk.Scrollbar(self, command=T1.yview)
-                # T1.configure(yscrollcommand=scroll.set)
-                # scroll.pack(side=tk.RIGHT, fill=tk.Y)
                 T1.config(state=tk.DISABLED)
-                T2.insert(tk.END, newsQuote[1])
+                
+                T2.insert(tk.END, newsQuote[0])
                 T2.config(state=tk.DISABLED)
-                # # scroll = tk.Scrollbar(self, command=T2.yview)
-                # # T2.configure(yscrollcommand=scroll.set)
-                # scroll.pack(side=tk.RIGHT, fill=tk.Y)
-                T3.insert(tk.END, newsQuote[2])
+
+                T3.insert(tk.END, newsQuote[0])
                 T3.config(state=tk.DISABLED)                
-                # scroll = tk.Scrollbar(self, command=T3.yview)
-                # T3.configure(yscrollcommand=scroll.set)
-                # scroll.pack(side=tk.RIGHT, fill=tk.Y)
+
             
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
         refresh.place(x=570,y=-70)     
@@ -153,17 +146,11 @@ class News(Page):
         T3.place(x=0, y=280)
         
         T1.insert(tk.END, newsQuote)
-        # scroll = tk.Scrollbar(self, command=T1.yview)
-        # T1.configure(yscrollcommand=scroll.set)
+
         T2.insert(tk.END, newsQuote)
-        # scroll = tk.Scrollbar(self, command=T2.yview)
-        # T2.configure(yscrollcommand=scroll.set)
+
         T3.insert(tk.END, newsQuote)
-        # scroll = tk.Scrollbar(self, command=T3.yview)
-        # T3.configure(yscrollcommand=scroll.set)
         
-        
-            
 
 
 class MainView(tk.Frame):
