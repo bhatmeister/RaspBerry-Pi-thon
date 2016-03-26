@@ -65,6 +65,5 @@ def fetchNews():
     return returnedData
 
 
-
 #city = raw_input("Enter the name of the city\n") #for weather
 #print dataFetcher('1',"")
