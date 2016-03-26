@@ -57,9 +57,9 @@ def fetchNews():
     topStories = (soup.find(class_="section-content")).find_all_next(class_="blended-wrapper",limit = 3)
     for data in topStories:
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
-        returnedData = str((data.find(class_ = "titletext").text))
+        returnedData = data.find(class_ = "titletext").text
         #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-        returnedData = returnedData + str((data.find(class_ = "esc-lead-snippet-wrapper").text)) + "$"
+        returnedData = returnedData + data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
         #print returnedData
 
     return returnedData
