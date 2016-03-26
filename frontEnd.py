@@ -122,6 +122,9 @@ class News(Page):
             if connStatus == 1: 
                 newsQuote=requestData('1'," ")
                 print newsQuote  
+                T1.clear(0,tk.END)
+                T2.clear(0,tk.END)
+                T3.clear(0,tk.END)                                
                 newsQuote=newsQuote.split('$')
                 T1.insert(tk.END, newsQuote[0])
                 scroll = tk.Scrollbar(self, command=T1.yview)
