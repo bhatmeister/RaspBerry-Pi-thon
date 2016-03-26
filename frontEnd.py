@@ -94,16 +94,13 @@ class Weather(Page):
                 Weather_Report[5]=Weather_Report[5].split('^')
                 Weather_Report[6]=Weather_Report[6].split('^')
                 Weather_Report[7]=Weather_Report[7].split('^')
-                Forecast.config(text=" "+Weather_Report[3][0]+" High:"+Weather_Report[3][1]+" Low:"+Weather_Report[3][2],font=("Helvetica",12))
-                Forecast.place(x=50, y=252)     
-                Forecast2.config(text=" "+Weather_Report[4][0]+" High:"+Weather_Report[4][1]+" Low:"+Weather_Report[4][2],font=("Helvetica",12))
-                Forecast2.place(x=250, y=252)
-                Forecast3.config(text=" "+Weather_Report[5][0]+" High:"+Weather_Report[5][1]+" Low:"+Weather_Report[5][2],font=("Helvetica",12))
-                Forecast3.place(x=50, y=277)
-                Forecast4.config(text=" "+Weather_Report[6][0]+" High:"+Weather_Report[6][1]+" Low:"+Weather_Report[6][2],font=("Helvetica",12))
-                Forecast4.place(x=250, y=277)
-                Forecast5.config(text=" "+Weather_Report[7][0]+" High:"+Weather_Report[7][1]+" Low:"+Weather_Report[7][2],font=("Helvetica",12))
-                Forecast5.place(x=50, y=302)
+                Forecast.config(text="      "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
+                Forecast.place(x=70, y=252)     
+                Forecast2.config(text=" MaxTemp:      "+Weather_Report[3][1]+"           "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"           "+Weather_Report[7][1],font=("Helvetica",12))
+                Forecast2.place(x=70, y=302)
+                Forecast3.config(text=" MinTemp:      "+Weather_Report[3][2]+"           "+Weather_Report[4][2]+"           "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"           "+Weather_Report[7][2],font=("Helvetica",12))
+                Forecast3.place(x=70, y=342)
+
 
 
         button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=10, command=lambda: sendReq(Locn.get()))
