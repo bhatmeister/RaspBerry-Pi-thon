@@ -16,10 +16,10 @@ def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
     rData = "No Data"
     if type == '0':
-        rData = fetchWeather(data)
+        rData = fetchWeather(data).encode('utf8')
     elif type == '1':
         rData = fetchNews()
-    return rData.encode('utf8')
+    return rData
 
 def fetchWeather(data):
     "This function fetches weather details for the client requested location"
@@ -57,9 +57,9 @@ def fetchNews():
     topStories = (soup.find(class_="section-content")).find_all_next(class_="blended-wrapper",limit = 3)
     for data in topStories:
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
-        returnedData = str(data.find(class_ = "titletext").text)
+        returnedData = str((data.find(class_ = "titletext").text))
         #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-        returnedData = returnedData + str(data.find(class_ = "esc-lead-snippet-wrapper").text) + "$"
+        returnedData = returnedData + str((data.find(class_ = "esc-lead-snippet-wrapper").text)) + "$"
         #print returnedData
 
     return returnedData
