@@ -19,19 +19,20 @@ class Home(Page):
         Page.__init__(self, *args, **kwargs)
 
         def serveConnect(IP,Port,button5):
-            T = tk.Text(self, height=4, width=50)
-            T.place(x=210, y=255)
+            T = tk.Label(self, height=4, width=50)
+            T.place(x=150, y=215)
             
             global connStatus
             connStatus = connectToSocket(IP,Port)
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
+                button5.config(state=tk.DISABLED)
                 
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
                 createSocket()
-            T.insert(tk.END, quote)
+            T.config(text=quote)
 
 
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
