@@ -59,8 +59,8 @@ def fetchNews():
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
         returnedData = data.find(class_ = "titletext").text
         #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-        returnedData = returnedData + "\n"+data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
-        #print returnedData
+        returnedData = returnedData + " "+data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
+        #print returnedData+"data"
 
     return returnedData
 
