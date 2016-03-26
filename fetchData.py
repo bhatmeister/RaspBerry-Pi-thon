@@ -61,8 +61,7 @@ def fetchNews():
         #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
         returnedData = returnedData + " "+data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
         #print returnedData+"data"
-
-    return returnedData
+        return returnedData
 
 
 #city = raw_input("Enter the name of the city\n") #for weather
