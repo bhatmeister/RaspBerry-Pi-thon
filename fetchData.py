@@ -19,7 +19,7 @@ def dataFetcher(type,data):
         rData = fetchWeather(data)
     elif type == '1':
         rData = fetchNews()
-    return rData
+    return rData.encode('utf8')
 
 def fetchWeather(data):
     "This function fetches weather details for the client requested location"
@@ -56,13 +56,15 @@ def fetchNews():
     soup = BeautifulSoup(htmlPage,"html.parser")
     topStories = (soup.find(class_="section-content")).find_all_next(class_="blended-wrapper",limit = 3)
     for data in topStories:
-        print "HEADLINE\n" + data.find(class_ = "titletext").text
+        #print "HEADLINE\n" + data.find(class_ = "titletext").text
         returnedData = str(data.find(class_ = "titletext").text)
-        print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
+        #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
         returnedData = returnedData + str(data.find(class_ = "esc-lead-snippet-wrapper").text) + "$"
+        #print returnedData
+
     return returnedData
 
 
 
 #city = raw_input("Enter the name of the city\n") #for weather
-#print dataFetcher('0',city)
+#print dataFetcher('1',"")

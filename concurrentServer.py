@@ -9,20 +9,19 @@ import sys
 
 # Server Socket
 server = socketClass.Socket()
-print "Socker Created"
+print "Socket Created"
 
 try:
     server.bind(server.getHostName(), config.serverPort)
 except:
-    print 'Bind failed' 
+    print 'Bind failed'
     sys.exit()
 
-print "Socket Bind Completed"
+print "Socket Bind Complete"
 
 server.listen(5)
 
-print "Server Listening at"
-print server.getHostName()
+print "Server Listening at " + str(server.getHostName())
 
 # Functionfor handling multiple client connections.
 # This creates threads for each new client
@@ -50,7 +49,7 @@ def clientThreadMessenger(connection):
         returnData = dataFetcher(data[0], data[1])
 
         print "Sent Data to Client"
-        connection.send(returnData.encode('utf8'))
+        connection.send(returnData)
 
     client.terminate()
 
