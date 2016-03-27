@@ -53,18 +53,15 @@ def fetchNews():
     response = urllib2.urlopen(config.newsLink)
     htmlPage = response.read()
 
+    returnedData = ""
     soup = BeautifulSoup(htmlPage,"html.parser")
     topStories = (soup.find(class_="section-content")).find_all_next(class_="blended-wrapper",limit = 3)
     for data in topStories:
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
-        returnedData = data.find(class_ = "titletext").text
+        returnedData = returnedData + data.find(class_ = "titletext").text + data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
         #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-        returnedData = returnedData + " "+data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
-        #print returnedData+"data"
-        return returnedData
-
     return returnedData
->>>>>>> Stashed changes
+
 
 
 #city = raw_input("Enter the name of the city\n") #for weather
