@@ -79,8 +79,8 @@ class Weather(Page):
             Forecast5.config(text=" ")
 
             if Weather_Report == "0":
-                Temp.config(text="City not found", font=("Helvetica",48))
-                Temp.place(x=300, y=150)
+                Temp.config(text="Sorry,City not found", font=("Helvetica",30))
+                Temp.place(x=180, y=100)
             else:
                 Weather_Report=Weather_Report.split('$')
                 Temp.config(text=Weather_Report[0], font=("Helvetica",48))
