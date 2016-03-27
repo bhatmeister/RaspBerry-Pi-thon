@@ -129,10 +129,10 @@ class News(Page):
                 T1.insert(tk.END, newsQuote[0])
                 T1.config(state=tk.DISABLED)
                 
-                T2.insert(tk.END, newsQuote[0])
+                T2.insert(tk.END, newsQuote[1])
                 T2.config(state=tk.DISABLED)
 
-                T3.insert(tk.END, newsQuote[0])
+                T3.insert(tk.END, newsQuote[2])
                 T3.config(state=tk.DISABLED)                
 
             
