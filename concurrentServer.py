@@ -22,16 +22,18 @@ def makeServerLive():
 
     print "Socket Bind Complete"
 
-    print "Server Listening at " + str(server.getHostName()) + ":" + str(server.getPeerName())
+    socketPair = str(server.getHostName()) + ":" + str(server.getPeerName())
+
+    print "Server Listening at " + socketPair
 
     server.listen(5)
 
-    return 1
+    return socketPair
 
 # Functionfor handling multiple client connections.
 # This creates threads for each new client
-    
-def acceptClient()
+
+def acceptClient():
 
     def clientThreadMessenger(connection):
         while True:
@@ -76,5 +78,3 @@ def acceptClient()
     server.terminate()
 
     return 1
-
-
