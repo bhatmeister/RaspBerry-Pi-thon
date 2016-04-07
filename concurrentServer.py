@@ -34,7 +34,7 @@ def makeServerLive():
 # This creates threads for each new client
 
 def acceptClient():
-
+    print 1
     def clientThreadMessenger(connection):
         while True:
 

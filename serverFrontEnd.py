@@ -7,17 +7,20 @@ root = tk.Tk()
 root.minsize(675 ,415)
 root.maxsize(675,415)
 
-def serveLive():
-    x=makeServerLive(IP,live)
+def serveLive(IP,live):
+    x=makeServerLive()
     if x==0:
         IP.config(state=tk.NORMAL)        
+        IP.delete('1.0', tk.END)
         IP.insert(tk.END, "The server bind procedure failed")
         IP.config(state=tk.DISABLED)
-    elif x==1:
-        IP.config(state=tk.NORMAL)        
-        IP.insert(tk.END, serverIP)
+    elif x!=0:
+        IP.config(state=tk.NORMAL)
+        IP.delete('1.0', tk.END)        
+        IP.insert(tk.END, x)
         IP.config(state=tk.DISABLED)
         live.config(state=tk.DISABLED)
+        #acceptClient()
         
 label = tk.Label( text="Welcome to raspberry.py server", font=("Helvetica",28))
 label.place(x=115, y=25)
