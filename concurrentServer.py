@@ -9,8 +9,6 @@ import sys
 
 def makeServerLive():
 
-    print('Called')
-
     # Server Socket
     server = socketClass.Socket()
     print "Socket Created"
@@ -23,9 +21,10 @@ def makeServerLive():
 
     print "Socket Bind Complete"
 
+    print "Server Listening at " + str(server.getHostName()) + ":" + str(server.getPeerName())
+
     server.listen(5)
 
-    print "Server Listening at " + str(server.getHostName())
 
     # Functionfor handling multiple client connections.
     # This creates threads for each new client

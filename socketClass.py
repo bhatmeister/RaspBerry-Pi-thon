@@ -2,8 +2,8 @@ import socket
 import config
 
 class Socket:
-    # Constructor method 
-    # TCP/IP 
+    # Constructor method
+    # TCP/IP
     def __init__(self, sock=None):
         if sock is None:
             self.socket = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -24,8 +24,12 @@ class Socket:
         return self.socket.accept()
 
     def getHostName(self):
-        #return socket.gethostname()
-        return config.serverIP
+        hostName = socket.gethostname()
+        return socket.gethostbyname(hostName)
+        #return config.serverIP
+
+    def getPeerName(self):
+        return config.serverPort
 
     def timeout(self,timeoutDuration):
         return self.socket.settimeout(timeoutDuration)
@@ -33,7 +37,7 @@ class Socket:
     # Send Data through socket
     def send(self, message):
         self.socket.send(message)
-            
+
     # Recieve data from socket
     def recieve(self):
         chunk = self.socket.recv(config.MSGLEN)
