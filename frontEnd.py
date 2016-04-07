@@ -96,9 +96,9 @@ class Weather(Page):
                 Weather_Report[7]=Weather_Report[7].split('^')
                 Forecast.config(text="       "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
                 Forecast.place(x=165, y=212)     
-                Forecast2.config(text=" MaxTemp:           "+Weather_Report[3][1]+"           "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"             "+Weather_Report[7][1],font=("Helvetica",12))
+                Forecast2.config(text=" MaxTemp:           "+Weather_Report[3][1]+"             "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"               "+Weather_Report[7][1],font=("Helvetica",12))
                 Forecast2.place(x=92, y=252)
-                Forecast3.config(text=" MinTemp:           "+Weather_Report[3][2]+"           "+Weather_Report[4][2]+"           "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"             "+Weather_Report[7][2],font=("Helvetica",12))
+                Forecast3.config(text=" MinTemp:           "+Weather_Report[3][2]+"                "+Weather_Report[4][2]+"              "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"               "+Weather_Report[7][2],font=("Helvetica",12))
                 Forecast3.place(x=92, y=282)
 
 

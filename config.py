@@ -14,5 +14,4 @@ serverPort = 12345
 clientPort = 12345
 
 # ServerIP
-
 serverIP = ''
