@@ -7,17 +7,18 @@ from fetchData import *
 from thread import *
 import sys
 
+server = socketClass.Socket()
+
 def makeServerLive():
 
     # Server Socket
-    server = socketClass.Socket()
     print "Socket Created"
 
     try:
         server.bind(server.getHostName(), config.serverPort)
     except:
         print 'Bind failed'
-        sys.exit()
+        return 0
 
     print "Socket Bind Complete"
 
@@ -25,9 +26,13 @@ def makeServerLive():
 
     server.listen(5)
 
+    return 1
 
-    # Functionfor handling multiple client connections.
-    # This creates threads for each new client
+# Functionfor handling multiple client connections.
+# This creates threads for each new client
+    
+def acceptClient()
+
     def clientThreadMessenger(connection):
         while True:
 
@@ -39,6 +44,7 @@ def makeServerLive():
             # No data
             if not data:
                 break
+                return 0
 
             # close client if ~ is detected in message
             if '~' in data:
@@ -68,5 +74,7 @@ def makeServerLive():
 
     client.terminate()
     server.terminate()
+
+    return 1
 
 
