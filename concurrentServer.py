@@ -7,61 +7,69 @@ from fetchData import *
 from thread import *
 import sys
 
-# Server Socket
-server = socketClass.Socket()
-print "Socket Created"
+def makeServerLive():
 
-try:
-    server.bind(server.getHostName(), config.serverPort)
-except:
-    print 'Bind failed'
-    sys.exit()
+    print('Called')
 
-print "Socket Bind Complete"
+    # Server Socket
+    server = socketClass.Socket()
+    print "Socket Created"
 
-server.listen(5)
+    try:
+        server.bind(server.getHostName(), config.serverPort)
+    except:
+        print 'Bind failed'
+        sys.exit()
 
-print "Server Listening at " + str(server.getHostName())
+    print "Socket Bind Complete"
 
-# Functionfor handling multiple client connections.
-# This creates threads for each new client
-def clientThreadMessenger(connection):
+    server.listen(5)
+
+    print "Server Listening at " + str(server.getHostName())
+
+    # Functionfor handling multiple client connections.
+    # This creates threads for each new client
+    def clientThreadMessenger(connection):
+        while True:
+
+            #Recieving data from client
+            connection.timeout(3600.0)
+            data = connection.recieve()
+            connection.timeout(None)
+
+            # No data
+            if not data:
+                break
+
+            # close client if ~ is detected in message
+            if '~' in data:
+                 break
+
+            # '#' delimited strings
+            data = data.split('#')
+
+            print(data)
+
+            returnData = dataFetcher(data[0], data[1])
+
+            print "Sent Data to Client"
+            connection.send(returnData)
+
+        client.terminate()
+
     while True:
+        # waiting to accept connection - blocking call
+        (clientData,(ip,port)) = server.accept()
 
-        #Recieving data from client
-        connection.timeout(3600.0)
-        data = connection.recieve()
-        connection.timeout(None)
+        client = socketClass.Socket(clientData)
+        print("Connected to %s" %str(ip))
 
-        # No data
-        if not data:
-            break
-
-        # close client if ~ is detected in message
-        if '~' in data:
-             break
-
-        # '#' delimited strings
-        data = data.split('#')
-
-        print(data)
-
-        returnData = dataFetcher(data[0], data[1])
-
-        print "Sent Data to Client"
-        connection.send(returnData)
+        # Make a new thread for each client
+        start_new_thread(clientThreadMessenger,(client,))
 
     client.terminate()
+    server.terminate()
 
-while True:
-    # waiting to accept connection - blocking call
-    (clientData,(ip,port)) = server.accept()
 
-    client = socketClass.Socket(clientData)
-    print("Connected to %s" %str(ip))
 
-    # Make a new thread for each client
-    start_new_thread(clientThreadMessenger,(client,))
 
-client.terminate()
-server.terminate()
