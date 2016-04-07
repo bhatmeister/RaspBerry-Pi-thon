@@ -11,6 +11,7 @@ import sys
 server = socketClass.Socket()
 print "Socket Created"
 
+server.getHostName()
 try:
     server.bind(server.getHostName(), config.serverPort)
 except:
@@ -21,7 +22,7 @@ print "Socket Bind Complete"
 
 server.listen(5)
 
-print "Server Listening at " + str(server.getHostName())
+print "Server Listening at " + str(server.getHostName()) + ":" + str(server.getPeerName())
 
 # Functionfor handling multiple client connections.
 # This creates threads for each new client

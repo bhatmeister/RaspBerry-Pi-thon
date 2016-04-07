@@ -32,7 +32,7 @@ def requestData(type,userInput):
     #userInput = raw_input("Enter Location:  ")
     client.send(str(type) + '#' + userInput)
     data = client.recieve()
-    print data + "\n"
+    #print data + "\n"
     return data
     if userInput == "~":
         return 0
