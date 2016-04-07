@@ -1,5 +1,6 @@
 import Tkinter as tk
 from concurrentServer import *
+from config import *
 
 root = tk.Tk()
     
@@ -7,9 +8,17 @@ root.minsize(675 ,415)
 root.maxsize(675,415)
 
 def serveLive():
-    makeServerLive(IP,live)
-    
- 
+    x=makeServerLive(IP,live)
+    if x==0:
+        IP.config(state=tk.NORMAL)        
+        IP.insert(tk.END, "The server bind procedure failed")
+        IP.config(state=tk.DISABLED)
+    elif x==1:
+        IP.config(state=tk.NORMAL)        
+        IP.insert(tk.END, serverIP)
+        IP.config(state=tk.DISABLED)
+        live.config(state=tk.DISABLED)
+        
 label = tk.Label( text="Welcome to raspberry.py server", font=("Helvetica",28))
 label.place(x=115, y=25)
 
