@@ -79,3 +79,7 @@ def acceptClient(count):
     server.terminate()
 
     return 1
+
+def terminateServer():
+    server.terminate()
+    print "Server Terminated"
