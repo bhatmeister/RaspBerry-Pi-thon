@@ -36,10 +36,7 @@ def makeServerLive():
 
 # Functionfor handling multiple client connections.
 # This creates threads for each new client
-
-def acceptClient(count):
-    print "test"
-    def clientThreadMessenger(connection):
+def clientThreadMessenger(connection):
         while True:
 
             #Recieving data from client
@@ -63,6 +60,8 @@ def acceptClient(count):
 
         client.terminate()
 
+def acceptClient(count):
+    print "test"
     while True:
 
         # waiting to accept connection - blocking call
