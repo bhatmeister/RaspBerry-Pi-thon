@@ -16,9 +16,9 @@ def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
     rData = ""
     if type == '0':
-        rData = fetchWeather(data).encode('utf8')
+        rData = fetchWeather(data)
     elif type == '1':
-        rData = fetchNews()
+        rData = fetchNews().encode('utf8')
     return rData
 
 def fetchWeather(data):
@@ -32,7 +32,7 @@ def fetchWeather(data):
     #location_id now contains the city's code
     try:
         weatherResult = pywapi.get_weather_from_weather_com(location_id , units = 'metric')
-        returnedData = weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C$" + "It is " + weatherResult["current_conditions"]["text"] + "$" + weatherResult["current_conditions"]["humidity"] + "%" + "$\n "
+        returnedData = weatherResult["location"]["name"] + "$" + weatherResult["current_conditions"]["temperature"] + u"\u00B0" + "C$" + "It is " + weatherResult["current_conditions"]["text"] + "$" + weatherResult["current_conditions"]["humidity"] + "%" + "$\n "
         for days in weatherResult["forecasts"]:
             returnedData = returnedData + days["day_of_week"] + "^" + days["high"] +  u"\u00B0" +"C^" + days["low"] +  u"\u00B0" + "C$"
 
