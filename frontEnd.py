@@ -86,7 +86,7 @@ class Weather(Page):
             Forecast3.config(text=" ")
             Forecast4.config(text=" ")
             Forecast5.config(text=" ")
-
+            
             if Weather_Report == 0:
                 Locatn.config(text="Server Down. Call for help :P", font=("Helvetica",30))
                 Locatn.place(x=180, y=100)
@@ -110,12 +110,40 @@ class Weather(Page):
                     Weather_Report[5]=Weather_Report[5].split('^')
                     Weather_Report[6]=Weather_Report[6].split('^')
                     Weather_Report[7]=Weather_Report[7].split('^')
-                    Forecast.config(text="       "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0]+"      "+Weather_Report[8][0],font=("Helvetica",12))
+                    Forecast.config(text="       "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
                     Forecast.place(x=165, y=232)
-                    Forecast2.config(text=" MaxTemp:           "+Weather_Report[4][1]+"             "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"           "+Weather_Report[7][1]+"               "+Weather_Report[8][1],font=("Helvetica",12))
-                    Forecast2.place(x=92, y=272)
-                    Forecast3.config(text=" MinTemp:           "+Weather_Report[4][2]+"                "+Weather_Report[5][2]+"              "+Weather_Report[6][2]+"           "+Weather_Report[7][2]+"               "+Weather_Report[8][2],font=("Helvetica",12))
+                    Forecast2.config(text=" MaxTemp:           ",font=("Helvetica",12))
+                    Forecast2.place(x=92, y=267)
+                    label1=tk.Label(text=" ")
+                    label1.config(text=Weather_Report[4][1],font=("Helvetica",12))
+                    label1.place(x=175, y=297)
+                    label2=tk.Label(text=" ")
+                    label2.config(text=Weather_Report[5][1],font=("Helvetica",12))
+                    label2.place(x=225, y=297)
+                    label3=tk.Label(text=" ")
+                    label3.config(text=Weather_Report[6][1],font=("Helvetica",12))
+                    label3.place(x=285, y=297)
+                    label4=tk.Label(text=" ")
+                    label4.config(text=Weather_Report[7][1],font=("Helvetica",12))
+                    label4.place(x=345, y=297)
+
+                    
+                    Forecast3.config(text=" MinTemp:           ",font=("Helvetica",12))
                     Forecast3.place(x=92, y=302)
+                    label1=tk.Label(text=" ")
+                    label1.config(text=Weather_Report[4][2],font=("Helvetica",12))
+                    label1.place(x=175, y=332)
+                    label2=tk.Label(text=" ")
+                    label2.config(text=Weather_Report[5][2],font=("Helvetica",12))
+                    label2.place(x=225, y=332)
+                    label3=tk.Label(text=" ")
+                    label3.config(text=Weather_Report[6][2],font=("Helvetica",12))
+                    label3.place(x=285, y=332)
+                    label4=tk.Label(text=" ")
+                    label4.config(text=Weather_Report[7][2],font=("Helvetica",12))
+                    label4.place(x=345, y=332)
+
+                    
 
 
 
@@ -144,15 +172,15 @@ class News(Page):
 
 
                 newsQuote[0]=newsQuote[0].split('@')
-                T1.insert(tk.END, newsQuote[0][0] + "\n\n" + newsQuote[0][1])
+                T1.insert(tk.END, "HEADLINE: "+newsQuote[0][0] + "\n" + newsQuote[0][1])
                 T1.config(state=tk.DISABLED)
 
                 newsQuote[1]=newsQuote[1].split('@')
-                T2.insert(tk.END, newsQuote[1][0] + "\n\n" + newsQuote[1][1])
+                T2.insert(tk.END, "HEADLINE: "+newsQuote[1][0] + "\n" + newsQuote[1][1])
                 T2.config(state=tk.DISABLED)
 
                 newsQuote[2]=newsQuote[2].split('@')
-                T3.insert(tk.END, newsQuote[2][0] + "\n\n" + newsQuote[2][1])
+                T3.insert(tk.END, "HEADLINE: "+newsQuote[2][0] + "\n\n" + newsQuote[2][1])
                 T3.config(state=tk.DISABLED)
 
 
@@ -205,7 +233,7 @@ class MainView(tk.Frame):
 
 if __name__ == "__main__":
     root = tk.Tk()
-
+    root.title("ProjectX")
 
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
