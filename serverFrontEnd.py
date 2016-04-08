@@ -35,8 +35,8 @@ def window():
 
     label = tk.Label( text="Welcome to raspberry.py server", font=("Helvetica",28))
     label.place(x=115, y=25)
-    label = tk.Label( text="Server IP:", font=("Helvetica",16))
-    label.place(x=220, y=100)
+    label = tk.Label( text="Server Socket:", font=("Helvetica",16))
+    label.place(x=195, y=100)
 
     IP = tk.Text(root, height=2, width=30,font=("Helvetica",16))
     IP.place(x=300, y=100)
@@ -68,13 +68,16 @@ def window():
 
 
 
-window()
 
 def closeServer():
-    #Function to terminate the server.
+    "This function closes the server"
     
     terminateServer()
     root.destroy()
+    
+    
+window()
 
+root.title("ProjectX")
 root.protocol("WM_DELETE_WINDOW", closeServer)
 root.mainloop()
