@@ -43,7 +43,7 @@ def requestData(type,userInput):
         return 0
 
 def disconnectClient():
-
-    print "This function will disconnect the client from the server"
+    "This function will disconnect the client from the server"
     global client
+    print "You are disconnected"
     client.terminate()
