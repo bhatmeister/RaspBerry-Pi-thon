@@ -14,7 +14,7 @@ from bs4 import BeautifulSoup
 
 def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
-    rData = "No Data"
+    rData = ""
     if type == '0':
         rData = fetchWeather(data).encode('utf8')
     elif type == '1':

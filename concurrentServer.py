@@ -9,8 +9,8 @@ import socket
 import sys
 
 server = socketClass.Socket()
-count=0
 
+listOfClients = []
 
 def makeServerLive():
 
@@ -51,11 +51,6 @@ def acceptClient(count):
             if not data:
                 break
                 return 0
-
-            # close client if ~ is detected in message
-            if '~' in data:
-                 break
-
             # '#' delimited strings
             data = data.split('#')
 
@@ -66,11 +61,15 @@ def acceptClient(count):
             print "Sent Data to Client"
             connection.send(returnData)
 
+<<<<<<< HEAD
         client.terminate()
+=======
+>>>>>>> origin/master
     while True:
 
         # waiting to accept connection - blocking call
         (clientData,(ip,port)) = server.accept()
+        listOfClients.append(str(ip) + " : " + str(port))
 
         client = socketClass.Socket(clientData)
         print("Connected to %s" %str(ip))
