@@ -30,7 +30,8 @@ class Socket:
         #return config.serverIP
 
     def getPeerName(self):
-        return config.serverPort
+        return self.socket.getsockname()[1]
+        #return config.serverPort
 
     def timeout(self,timeoutDuration):
         return self.socket.settimeout(timeoutDuration)

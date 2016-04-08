@@ -2,7 +2,6 @@ import Tkinter as tk
 from concurrentServer import *
 from config import *
 import thread
-import tkMessageBox
 root = tk.Tk()
 
 root.minsize(675 ,415)
@@ -15,7 +14,7 @@ count=0
 def serveLive(IP,live):
     global x
     x=makeServerLive()
-    print "x in loop" + str(x)
+    #print "x in loop" + str(x)
     if x==0:
         IP.config(state=tk.NORMAL)
         IP.delete('1.0', tk.END)
@@ -79,6 +78,7 @@ window()
 
 def closeServer():
     terminateServer()
+    root.destroy()
 
 root.protocol("WM_DELETE_WINDOW", closeServer)
 root.mainloop()

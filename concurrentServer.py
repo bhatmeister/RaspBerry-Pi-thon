@@ -18,7 +18,7 @@ def makeServerLive():
     print "Socket Created"
 
     try:
-        server.bind(server.getHostName(), config.serverPort)
+        server.bind(config.serverIP, config.serverPort)
     except socket.error, exc:
         print exc
         print 'Bind failed'
