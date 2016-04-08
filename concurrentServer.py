@@ -61,7 +61,6 @@ def clientThreadMessenger(connection):
         client.terminate()
 
 def acceptClient(count):
-    print "test"
     while True:
 
         # waiting to accept connection - blocking call

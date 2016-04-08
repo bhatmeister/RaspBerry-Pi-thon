@@ -25,7 +25,6 @@ class Socket:
 
     def getHostName(self):
         hostName = socket.gethostname()
-        print "hostname" + str(hostName)
         return socket.gethostbyname(hostName)
         #return config.serverIP
 
