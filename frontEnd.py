@@ -28,8 +28,8 @@ class Home(Page):
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
                 button5.config(state=tk.DISABLED)
-                disconnect.config(state=tk.NORMAL)  
-                
+                disconnect.config(state=tk.NORMAL)
+
 
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
@@ -39,13 +39,13 @@ class Home(Page):
         def serveDisconn(disconnect,button5):
             T = tk.Label(self, height=4, width=50)
             T.place(x=150, y=215)
-            
+
             button5.config(state=tk.NORMAL)
             disconnect.config(state=tk.DISABLED)
-            quote = """The Connection Has Been Killed"""    
+            quote = """The Connection Has Been Killed"""
             T.config(text=quote)
             disconnectFn()
-        
+
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=140, y=50)
         IP =tk.Entry(self, width=15)
@@ -141,38 +141,38 @@ class News(Page):
                 T2.delete('1.0', tk.END)
                 T3.config(state=tk.NORMAL)
                 T3.delete('1.0', tk.END)
-                newsQuote=str(requestData('1'," "))
+                newsQuote=str((requestData('1'," ")).encode('latin'))
                 newsQuote=newsQuote.split('$')
-                
-                
-                newsQuote[0]=newsQuote[0].split('@')    
+
+
+                newsQuote[0]=newsQuote[0].split('@')
                 T1.insert(tk.END, newsQuote[0][0] + "\n\n" + newsQuote[0][1])
                 T1.config(state=tk.DISABLED)
-                
+
                 newsQuote[1]=newsQuote[1].split('@')
                 T2.insert(tk.END, newsQuote[1][0] + "\n\n" + newsQuote[1][1])
                 T2.config(state=tk.DISABLED)
-                
+
                 newsQuote[2]=newsQuote[2].split('@')
                 T3.insert(tk.END, newsQuote[2][0] + "\n\n" + newsQuote[2][1])
-                T3.config(state=tk.DISABLED)                
+                T3.config(state=tk.DISABLED)
 
 
 
 
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
-        refresh.place(x=300,y=-70)     
+        refresh.place(x=300,y=-70)
 
         T1 = tk.Text(self, height=6, width=80)
         T1.place(x=0, y=35)
         T2 = tk.Text(self, height=6, width=80)
         T2.place(x=0, y=160)
         T3 = tk.Text(self, height=6, width=80)
-        T3.place(x=0, y=280)        
+        T3.place(x=0, y=280)
         T1.insert(tk.END, " ")
         T2.insert(tk.END, " ")
         T3.insert(tk.END, " ")
-        
+
 
 
 
