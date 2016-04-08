@@ -141,22 +141,20 @@ class News(Page):
                 T2.delete('1.0', tk.END)
                 T3.config(state=tk.NORMAL)
                 T3.delete('1.0', tk.END)
-                newsQuote=requestData('1'," ")
+                newsQuote=str(requestData('1'," "))
                 newsQuote=newsQuote.split('$')
                 
-                for index in range(len(newsQuote)):
-                    newsQuote[index]=newsQuote[index].split('@')
-                    
-                Quote=newsQuote[0][0]+"\n"+newsQuote[0][1]
-                T1.insert(tk.END, Quote[0][0])
+                
+                newsQuote[0]=newsQuote[0].split('@')    
+                T1.insert(tk.END, newsQuote[0][0] + "\n\n" + newsQuote[0][1])
                 T1.config(state=tk.DISABLED)
                 
-                Quote=newsQuote[1][0]+"\n"+newsQuote[1][1]
-                T2.insert(tk.END, Quote)
+                newsQuote[1]=newsQuote[1].split('@')
+                T2.insert(tk.END, newsQuote[1][0] + "\n\n" + newsQuote[1][1])
                 T2.config(state=tk.DISABLED)
                 
-                Quote=newsQuote[2][0]+"\n"+newsQuote[2][1]
-                T3.insert(tk.END, Quote[2])
+                newsQuote[2]=newsQuote[2].split('@')
+                T3.insert(tk.END, newsQuote[2][0] + "\n\n" + newsQuote[2][1])
                 T3.config(state=tk.DISABLED)                
 
 
@@ -166,7 +164,7 @@ class News(Page):
         refresh.place(x=300,y=-70)     
 
         T1 = tk.Text(self, height=6, width=80)
-        T1.place(x=0, y=25)
+        T1.place(x=0, y=35)
         T2 = tk.Text(self, height=6, width=80)
         T2.place(x=0, y=160)
         T3 = tk.Text(self, height=6, width=80)
