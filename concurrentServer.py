@@ -9,6 +9,8 @@ import socket
 import sys
 
 server = socketClass.Socket()
+count=0
+
 
 def makeServerLive():
 
@@ -35,7 +37,7 @@ def makeServerLive():
 # Functionfor handling multiple client connections.
 # This creates threads for each new client
 
-def acceptClient(IP):
+def acceptClient(count):
     print "test"
     def clientThreadMessenger(connection):
         while True:
@@ -65,7 +67,6 @@ def acceptClient(IP):
             connection.send(returnData)
 
         client.terminate()
-
     while True:
 
         # waiting to accept connection - blocking call
@@ -73,7 +74,7 @@ def acceptClient(IP):
 
         client = socketClass.Socket(clientData)
         print("Connected to %s" %str(ip))
-
+        count=count+1
         # Make a new thread for each client
         start_new_thread(clientThreadMessenger,(client,))
 

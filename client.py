@@ -45,7 +45,8 @@ def requestData(type,userInput):
     except socket.error, exc:
         print exc
 
-def disconnect():
-    "This function will disconnect the client from the server"
+def disconnectFn():
+
+    print "This function will disconnect the client from the server"
     global client
     client.terminate()

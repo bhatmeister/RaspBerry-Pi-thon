@@ -18,7 +18,7 @@ class Home(Page):
         Page.__init__(self, *args, **kwargs)
         Page.__init__(self, *args, **kwargs)
 
-        def serveConnect(IP,Port,button5):
+        def serveConnect(IP,Port,button5,disconnect):
             T = tk.Label(self, height=4, width=50)
             T.place(x=150, y=215)
             
@@ -28,21 +28,33 @@ class Home(Page):
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
                 button5.config(state=tk.DISABLED)
+                disconnect.config(state=tk.NORMAL)  
                 
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
                 createSocket()
             T.config(text=quote)
 
-
+        def serveDisconn(disconnect,button5):
+            T = tk.Label(self, height=4, width=50)
+            T.place(x=150, y=215)
+            
+            button5.config(state=tk.NORMAL)
+            disconnect.config(state=tk.DISABLED)
+            quote = """The Connection Has Been Killed"""    
+            T.config(text=quote)
+            disconnectFn()
+        
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=140, y=50)
         IP =tk.Entry(self, width=15)
-        IP.insert(0,'192.168.1.101')
+        IP.insert(0,' ')
         Port =tk.Entry(self, width=15)
         Port.insert(0,'12345')
-        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10, command=lambda: serveConnect(IP.get(),Port.get(),button5))
-        button5.place(x=290,y=180)
+        disconnect = tk.Button(self, text="Disconnect",bg="Black",fg="White",width=12, state=tk.DISABLED,command=lambda: serveDisconn(disconnect,button5))
+        button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10,command=lambda: serveConnect(IP.get(),Port.get(),button5,disconnect))
+        button5.place(x=220,y=180)
+        disconnect.place(x=335,y=180)
         IP.place(x=220,y=137)
         Port.place(x=340,y=137)
 
@@ -126,18 +138,24 @@ class News(Page):
                 newsQuote=requestData('1'," ")
                 newsQuote=newsQuote.split('$')
                 
-                T1.insert(tk.END, newsQuote[0])
+                for index in range(len(newsQuote)):
+                    newsQuote[index]=newsQuote[index].split('@')
+                    
+                Quote=newsQuote[0][0]+"\n"+newsQuote[0][1]
+                T1.insert(tk.END, Quote[0][0])
                 T1.config(state=tk.DISABLED)
                 
-                T2.insert(tk.END, newsQuote[1])
+                Quote=newsQuote[1][0]+"\n"+newsQuote[1][1]
+                T2.insert(tk.END, Quote)
                 T2.config(state=tk.DISABLED)
-
-                T3.insert(tk.END, newsQuote[2])
+                
+                Quote=newsQuote[2][0]+"\n"+newsQuote[2][1]
+                T3.insert(tk.END, Quote[2])
                 T3.config(state=tk.DISABLED)                
 
             
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
-        refresh.place(x=570,y=-70)     
+        refresh.place(x=300,y=-70)     
         T1 = tk.Text(self, height=6, width=80)
         T1.place(x=0, y=25)
         T2 = tk.Text(self, height=6, width=80)
@@ -145,11 +163,11 @@ class News(Page):
         T3 = tk.Text(self, height=6, width=80)
         T3.place(x=0, y=280)
         
-        T1.insert(tk.END, newsQuote)
+        T1.insert(tk.END, " ")
 
-        T2.insert(tk.END, newsQuote)
+        T2.insert(tk.END, " ")
 
-        T3.insert(tk.END, newsQuote)
+        T3.insert(tk.END, " ")
         
 
 

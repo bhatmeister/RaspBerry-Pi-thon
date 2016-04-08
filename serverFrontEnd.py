@@ -8,7 +8,7 @@ root.minsize(675 ,415)
 root.maxsize(675,415)
 
 x=0
-
+count=0
 #def window()
 
 def serveLive(IP,live):
@@ -26,10 +26,11 @@ def serveLive(IP,live):
         IP.insert(tk.END, x)
         IP.config(state=tk.DISABLED)
         live.config(state=tk.DISABLED)
-        thread.start_new_thread(acceptClient,(IP,))
+        thread.start_new_thread(acceptClient,(count,))
                 
                         
-def window():               
+def window():     
+          
     label = tk.Label( text="Welcome to raspberry.py server", font=("Helvetica",28))
     label.place(x=115, y=25)
 
@@ -44,27 +45,34 @@ def window():
     live = tk.Button( text="LIVE", font=("Helvetica",16),command=lambda: serveLive(IP,live))
     live.place(x=300, y=130)
 
+    
 
-    text = tk.Text(root, height=2, width=30,font=("Helvetica",16))
+    text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=210)
-    text.insert(tk.END, "Just a text Widget\n")
+    text.insert(tk.END, "\n")
 
-    text = tk.Text(root, height=2, width=30,font=("Helvetica",16))
+    text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=240)
-    text.insert(tk.END, "Just a text Widget\n")
+    text.insert(tk.END, "\n")
 
-    text = tk.Text(root, height=2, width=30,font=("Helvetica",16))
+    text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=270)
-    text.insert(tk.END, "Just a text Widget\n")
+    text.insert(tk.END, "\n")
 
-    text = tk.Text(root, height=2, width=30,font=("Helvetica",16))
+    text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=300)
-    text.insert(tk.END, "Just a text Widget\n")
+    text.insert(tk.END, "\n")
 
-    text = tk.Text(root, height=2, width=30,font=("Helvetica",16))
+    text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=330)
-    text.insert(tk.END, "Just a text Widget\n")
-
+    text.insert(tk.END, "\n")
+    
+     
+    # text1.config(state=tk.NORMAL)
+    # text1.delete('1.0', tk.END)
+    # text1.insert(tk.END, list[count2])
+    # text1.config(state=tk.DISABLED)
+    # count2=0
 
 window()
 
