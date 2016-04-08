@@ -49,11 +49,6 @@ def acceptClient(IP):
             if not data:
                 break
                 return 0
-
-            # close client if ~ is detected in message
-            if '~' in data:
-                 break
-
             # '#' delimited strings
             data = data.split('#')
 
@@ -63,8 +58,6 @@ def acceptClient(IP):
 
             print "Sent Data to Client"
             connection.send(returnData)
-
-        client.terminate()
 
     while True:
 
