@@ -58,7 +58,7 @@ def clientThreadMessenger(connection):
             print "Sent Data to Client"
             connection.send(returnData)
 
-        client.terminate()
+        connection.terminate()
 
 def acceptClient(count):
     while True:
