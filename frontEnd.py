@@ -141,7 +141,7 @@ class News(Page):
                 T2.delete('1.0', tk.END)
                 T3.config(state=tk.NORMAL)
                 T3.delete('1.0', tk.END)
-                newsQuote=str((requestData('1'," ")).encode('latin'))
+                newsQuote=str(requestData('1'," "))
                 newsQuote=newsQuote.split('$')
 
 
