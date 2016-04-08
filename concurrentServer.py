@@ -30,7 +30,7 @@ def makeServerLive():
 
     print "Server Listening at " + socketPair
 
-    server.listen(5)
+    server.listen(10)
 
     return socketPair
 
