@@ -7,6 +7,7 @@ createSocket()
 
 newsQuote='''No News Fetched Yet'''
 connStatus=0
+
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -14,12 +15,16 @@ class Page(tk.Frame):
         self.lift()
 
 class Home(Page):
+
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         Page.__init__(self, *args, **kwargs)
 
         def serveConnect(IP,Port,button5,disconnect):
-            T = tk.Label(self, height=4, width=50)
+            #Function to serve the Connect Request By The Client
+            
+            #T is the connection message
+            T = tk.Label(self, height=4, width=50)          
             T.place(x=150, y=215)
 
             global connStatus
@@ -37,9 +42,11 @@ class Home(Page):
             T.config(text=quote)
 
         def serveDisconn(disconnect,button5):
+            #Function to serve the Disconnect Request By The Client
+            
+            #T is the connection message
             T = tk.Label(self, height=4, width=50)
             T.place(x=150, y=215)
-
             button5.config(state=tk.NORMAL)
             disconnect.config(state=tk.DISABLED)
             quote = """The Connection Has Been Killed"""
@@ -53,6 +60,8 @@ class Home(Page):
         Port =tk.Entry(self, width=15)
         Port.insert(0,'Port No.')
         disconnect = tk.Button(self, text="Disconnect",bg="Black",fg="White",width=12, state=tk.DISABLED,command=lambda: serveDisconn(disconnect,button5))
+        
+        #button5 is the connect button
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10,command=lambda: serveConnect(IP.get(),Port.get(),button5,disconnect))
         button5.place(x=220,y=180)
         disconnect.place(x=355,y=180)
@@ -60,16 +69,16 @@ class Home(Page):
         Port.place(x=360,y=137)
 
 class Weather(Page):
+
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
+        
+        #declaring the output labels for the weather screen
         Locn =tk.Entry(self, width=25)
         Locn.insert(0,'Location')
         Temp=tk.Label(self,text=" ",font=("Helvetica",48))
-
         Status=tk.Label(self,text=" ",font=("Helvetica",24))
-
         Humidity=tk.Label(self, text=" ",font=("Helvetica",20))
-
         Forecast=tk.Label(self, text=" ",font=("Helvetica",12))
         Forecast2=tk.Label(self, text=" ",font=("Helvetica",12))
         Forecast3=tk.Label(self, text=" ",font=("Helvetica",12))
@@ -84,7 +93,10 @@ class Weather(Page):
         Forecast12=tk.Label(self, text=" ",font=("Helvetica",12))
         Forecast13=tk.Label(self, text=" ",font=("Helvetica",12))
         Locatn=tk.Label(self,text=" ")
+        
         def sendReq(data):
+            #Function to handle the client request for Weather Report
+            
             Temp.config(text=" ")
             Status.config(text=" ")
             Humidity.config(text=" ")
@@ -103,11 +115,9 @@ class Weather(Page):
             Forecast12.config(text=" ")
             Forecast13.config(text=" ")
             
-            
             if Weather_Report == 0:
                 Locatn.config(text="Server Down. Call for help :P", font=("Helvetica",30))
                 Locatn.place(x=180, y=100)
-
             else:
                 if Weather_Report == "0":
                     Locatn.config(text="Cannot locate city", font=("Helvetica",30))
@@ -122,11 +132,14 @@ class Weather(Page):
                     Status.place(x=280, y=152)
                     Humidity.config(text="Humidity: "+Weather_Report[3], font=("Helvetica",20))
                     Humidity.place(x=260, y=202)
-                    Weather_Report[8]=Weather_Report[8].split('^')
+                    
                     Weather_Report[4]=Weather_Report[4].split('^')
                     Weather_Report[5]=Weather_Report[5].split('^')
                     Weather_Report[6]=Weather_Report[6].split('^')
                     Weather_Report[7]=Weather_Report[7].split('^')
+                    Weather_Report[8]=Weather_Report[8].split('^')
+                    
+                    #Max temp. Forecasts
                     Forecast.config(text="       "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0]+"      "+Weather_Report[8][0],font=("Helvetica",12))
                     Forecast.place(x=165, y=232)
                     Forecast2.config(text=" MaxTemp:           ",font=("Helvetica",12))
@@ -142,6 +155,7 @@ class Weather(Page):
                     Forecast12.config(text=Weather_Report[8][1],font=("Helvetica",12))
                     Forecast12.place(x=405, y=275)
                     
+                    #Min temp. Forecasts
                     Forecast3.config(text=" MinTemp:           ",font=("Helvetica",12))
                     Forecast3.place(x=92, y=317)
                     Forecast8.config(text=Weather_Report[4][2],font=("Helvetica",12))
@@ -155,11 +169,9 @@ class Weather(Page):
                     Forecast13.config(text=Weather_Report[8][2],font=("Helvetica",12))
                     Forecast13.place(x=405, y=317)
                     
-
-
-
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=5, command=lambda: sendReq(Locn.get()))
-        button5.place(x=410,y=27)
+        #The request data button for the client             
+        Go = tk.Button(self, text="Go", bg="Black",fg="White", width=5, command=lambda: sendReq(Locn.get()))
+        Go.place(x=410,y=27)
         Locn.place(x=225,y=27)
 
 
@@ -170,6 +182,8 @@ class News(Page):
 
 
         def newsReport():
+            #Function to handle the client's request for news.
+            
             global connStatus
             if connStatus == 1:
                 T1.config(state=tk.NORMAL)
@@ -178,9 +192,9 @@ class News(Page):
                 T2.delete('1.0', tk.END)
                 T3.config(state=tk.NORMAL)
                 T3.delete('1.0', tk.END)
+                
                 newsQuote=str(requestData('1'," "))
                 newsQuote=newsQuote.split('$')
-
 
                 newsQuote[0]=newsQuote[0].split('@')
                 T1.insert(tk.END, "HEADLINE: "+newsQuote[0][0] + "\n" + newsQuote[0][1])
@@ -194,12 +208,10 @@ class News(Page):
                 T3.insert(tk.END, "HEADLINE: "+newsQuote[2][0] + "\n\n" + newsQuote[2][1])
                 T3.config(state=tk.DISABLED)
 
-
-
-
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
         refresh.place(x=300,y=-70)
 
+        #Initialising the news widgets.
         T1 = tk.Text(self, height=6, width=90)
         T1.place(x=15, y=35)
         T2 = tk.Text(self, height=6, width=90)
@@ -214,10 +226,11 @@ class News(Page):
 
 
 class MainView(tk.Frame):
+#class to define the main layout of the GUI
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
 
-
+        #The three pages of the GUI
         p1 = Home(self)
         p2 = Weather(self)
         p4 = News(self)
@@ -243,11 +256,12 @@ class MainView(tk.Frame):
         p1.show()
 
 if __name__ == "__main__":
+
     root = tk.Tk()
     root.title("ProjectX")
-
     main = MainView(root)
     main.pack(side="top", fill="both", expand=True)
+    
     root.minsize(675 ,415)
     root.maxsize(675,415)
     root.mainloop()
