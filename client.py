@@ -42,7 +42,7 @@ def requestData(type,userInput):
         print exc
         return 0
 
-def disconnectFn():
+def disconnectClient():
 
     print "This function will disconnect the client from the server"
     global client

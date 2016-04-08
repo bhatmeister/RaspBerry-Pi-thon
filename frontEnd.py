@@ -44,7 +44,7 @@ class Home(Page):
             disconnect.config(state=tk.DISABLED)
             quote = """The Connection Has Been Killed"""
             T.config(text=quote)
-            disconnectFn()
+            disconnectClient()
 
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=140, y=50)
