@@ -10,7 +10,6 @@ def createSocket():
     "This function creates the socket"
     global client
     client = socketClass.Socket()
-    print "socket created"
 
 def connectToSocket(serverIP, serverPort):
     "This function connects to socket"
