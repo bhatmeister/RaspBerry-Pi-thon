@@ -30,20 +30,18 @@ def connectToSocket(serverIP, serverPort):
 def requestData(type,userInput):
     "This function requests data from the server"
     global client
-    #userInput = raw_input("Enter Location:  ")
     try:
         client.timeout(15)
-        print "sending"
         client.send(str(type) + '#' + userInput)
-        print "sent"
-        client.timeout(15)
-        print "Recieving"
         data = client.recieve()
-        print "Recieved"
-        print data + "\n"
-        return data
+        if data == "":
+            return 0
+        #print data + "\n"
+        else:
+            return data
     except socket.error, exc:
         print exc
+        return 0
 
 def disconnect():
     "This function will disconnect the client from the server"

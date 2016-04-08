@@ -21,14 +21,14 @@ class Home(Page):
         def serveConnect(IP,Port,button5):
             T = tk.Label(self, height=4, width=50)
             T.place(x=150, y=215)
-            
+
             global connStatus
             connStatus = connectToSocket(IP,Port)
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
                 button5.config(state=tk.DISABLED)
-                
+
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
                 createSocket()
@@ -52,13 +52,13 @@ class Weather(Page):
         Locn =tk.Entry(self, width=25)
         Locn.insert(0,'Location')
         Temp=tk.Label(self,text=" ",font=("Helvetica",48))
-        
+
         Status=tk.Label(self,text=" ",font=("Helvetica",24))
-        
+
         Humidity=tk.Label(self, text=" ",font=("Helvetica",20))
-        
+
         Forecast=tk.Label(self, text=" ",font=("Helvetica",12))
-        Forecast.place(x=50, y=252)        
+        Forecast.place(x=50, y=252)
         Forecast2=tk.Label(self, text=" ",font=("Helvetica",12))
         Forecast2.place(x=250, y=252)
         Forecast3=tk.Label(self, text=" ",font=("Helvetica",12))
@@ -78,28 +78,33 @@ class Weather(Page):
             Forecast4.config(text=" ")
             Forecast5.config(text=" ")
 
-            if Weather_Report == "0":
-                Temp.config(text="Sorry,City not found", font=("Helvetica",30))
+            if Weather_Report == 0:
+                Temp.config(text="Server Down. Call for help :P", font=("Helvetica",30))
                 Temp.place(x=180, y=100)
+
             else:
-                Weather_Report=Weather_Report.split('$')
-                Temp.config(text=Weather_Report[0], font=("Helvetica",48))
-                Temp.place(x=280, y=82)
-                Status.config(text=Weather_Report[1], font=("Helvetica",24))
-                Status.place(x=280, y=132)
-                Humidity.config(text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
-                Humidity.place(x=260, y=182)
-                Weather_Report[3]=Weather_Report[3].split('^')
-                Weather_Report[4]=Weather_Report[4].split('^')
-                Weather_Report[5]=Weather_Report[5].split('^')
-                Weather_Report[6]=Weather_Report[6].split('^')
-                Weather_Report[7]=Weather_Report[7].split('^')
-                Forecast.config(text="       "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
-                Forecast.place(x=165, y=212)     
-                Forecast2.config(text=" MaxTemp:           "+Weather_Report[3][1]+"             "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"               "+Weather_Report[7][1],font=("Helvetica",12))
-                Forecast2.place(x=92, y=252)
-                Forecast3.config(text=" MinTemp:           "+Weather_Report[3][2]+"                "+Weather_Report[4][2]+"              "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"               "+Weather_Report[7][2],font=("Helvetica",12))
-                Forecast3.place(x=92, y=282)
+                if Weather_Report == "0":
+                    Temp.config(text="Sorry,City not found", font=("Helvetica",30))
+                    Temp.place(x=180, y=100)
+                else:
+                    Weather_Report=Weather_Report.split('$')
+                    Temp.config(text=Weather_Report[0], font=("Helvetica",48))
+                    Temp.place(x=280, y=82)
+                    Status.config(text=Weather_Report[1], font=("Helvetica",24))
+                    Status.place(x=280, y=132)
+                    Humidity.config(text="Humidity: "+Weather_Report[2], font=("Helvetica",20))
+                    Humidity.place(x=260, y=182)
+                    Weather_Report[3]=Weather_Report[3].split('^')
+                    Weather_Report[4]=Weather_Report[4].split('^')
+                    Weather_Report[5]=Weather_Report[5].split('^')
+                    Weather_Report[6]=Weather_Report[6].split('^')
+                    Weather_Report[7]=Weather_Report[7].split('^')
+                    Forecast.config(text="       "+Weather_Report[3][0]+"      "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0],font=("Helvetica",12))
+                    Forecast.place(x=165, y=212)
+                    Forecast2.config(text=" MaxTemp:           "+Weather_Report[3][1]+"             "+Weather_Report[4][1]+"           "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"               "+Weather_Report[7][1],font=("Helvetica",12))
+                    Forecast2.place(x=92, y=252)
+                    Forecast3.config(text=" MinTemp:           "+Weather_Report[3][2]+"                "+Weather_Report[4][2]+"              "+Weather_Report[5][2]+"           "+Weather_Report[6][2]+"               "+Weather_Report[7][2],font=("Helvetica",12))
+                    Forecast3.place(x=92, y=282)
 
 
 
@@ -116,7 +121,7 @@ class News(Page):
 
         def newsReport():
             global connStatus
-            if connStatus == 1: 
+            if connStatus == 1:
                 T1.config(state=tk.NORMAL)
                 T1.delete('1.0', tk.END)
                 T2.config(state=tk.NORMAL)
@@ -125,49 +130,49 @@ class News(Page):
                 T3.delete('1.0', tk.END)
                 newsQuote=requestData('1'," ")
                 newsQuote=newsQuote.split('$')
-                
+
                 T1.insert(tk.END, newsQuote[0])
                 T1.config(state=tk.DISABLED)
-                
+
                 T2.insert(tk.END, newsQuote[1])
                 T2.config(state=tk.DISABLED)
 
                 T3.insert(tk.END, newsQuote[2])
-                T3.config(state=tk.DISABLED)                
+                T3.config(state=tk.DISABLED)
 
-            
+
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
-        refresh.place(x=570,y=-70)     
+        refresh.place(x=570,y=-70)
         T1 = tk.Text(self, height=6, width=80)
         T1.place(x=0, y=25)
         T2 = tk.Text(self, height=6, width=80)
         T2.place(x=0, y=160)
         T3 = tk.Text(self, height=6, width=80)
         T3.place(x=0, y=280)
-        
+
         T1.insert(tk.END, newsQuote)
 
         T2.insert(tk.END, newsQuote)
 
         T3.insert(tk.END, newsQuote)
-        
+
 
 
 class MainView(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
 
-        
+
         p1 = Home(self)
         p2 = Weather(self)
         p4 = News(self)
-            
+
         buttonframe = tk.Frame(self)
         container = tk.Frame(self)
         buttonframe.pack(side="top", fill="x", expand=False)
         container.pack(side="top", fill="both", expand=True)
-        
-            
+
+
         b1 = tk.Button(buttonframe, text="Home", command=p1.lift,width=28)
         b2 = tk.Button(buttonframe, text="Weather", command=p2.lift,width=28)
         b4 = tk.Button(buttonframe, text="News", command=p4.lift,width=28)
