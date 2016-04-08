@@ -88,34 +88,34 @@ class Weather(Page):
             Forecast5.config(text=" ")
 
             if Weather_Report == 0:
-                Temp.config(text="Server Down. Call for help :P", font=("Helvetica",30))
-                Temp.place(x=180, y=100)
+                Locatn.config(text="Server Down. Call for help :P", font=("Helvetica",30))
+                Locatn.place(x=180, y=100)
 
             else:
                 if Weather_Report == "0":
-                    Temp.config(text="Cannot locate city", font=("Helvetica",30))
-                    Temp.place(x=180, y=100)
+                    Locatn.config(text="Cannot locate city", font=("Helvetica",30))
+                    Locatn.place(x=180, y=100)
                 else:
                     Weather_Report=Weather_Report.split('$')
                     Locatn.config(text=Weather_Report[0], font=("Helvetica",20))
-                    Locatn.place(x=260, y=40)
+                    Locatn.place(x=240, y=70)
                     Temp.config(text=Weather_Report[1], font=("Helvetica",48))
-                    Temp.place(x=280, y=82)
+                    Temp.place(x=280, y=102)
                     Status.config(text=Weather_Report[2], font=("Helvetica",24))
-                    Status.place(x=280, y=132)
+                    Status.place(x=280, y=152)
                     Humidity.config(text="Humidity: "+Weather_Report[3], font=("Helvetica",20))
-                    Humidity.place(x=260, y=182)
+                    Humidity.place(x=260, y=202)
                     Weather_Report[8]=Weather_Report[8].split('^')
                     Weather_Report[4]=Weather_Report[4].split('^')
                     Weather_Report[5]=Weather_Report[5].split('^')
                     Weather_Report[6]=Weather_Report[6].split('^')
                     Weather_Report[7]=Weather_Report[7].split('^')
                     Forecast.config(text="       "+Weather_Report[4][0]+"      "+Weather_Report[5][0]+"      "+Weather_Report[6][0]+"      "+Weather_Report[7][0]+"      "+Weather_Report[8][0],font=("Helvetica",12))
-                    Forecast.place(x=165, y=212)
+                    Forecast.place(x=165, y=232)
                     Forecast2.config(text=" MaxTemp:           "+Weather_Report[4][1]+"             "+Weather_Report[5][1]+"           "+Weather_Report[6][1]+"           "+Weather_Report[7][1]+"               "+Weather_Report[8][1],font=("Helvetica",12))
-                    Forecast2.place(x=92, y=252)
+                    Forecast2.place(x=92, y=272)
                     Forecast3.config(text=" MinTemp:           "+Weather_Report[4][2]+"                "+Weather_Report[5][2]+"              "+Weather_Report[6][2]+"           "+Weather_Report[7][2]+"               "+Weather_Report[8][2],font=("Helvetica",12))
-                    Forecast3.place(x=92, y=282)
+                    Forecast3.place(x=92, y=302)
 
 
 
