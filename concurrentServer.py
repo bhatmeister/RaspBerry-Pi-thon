@@ -64,7 +64,7 @@ def acceptClient(IP):
 
         # waiting to accept connection - blocking call
         (clientData,(ip,port)) = server.accept()
-        listOfClients.append(Str(ip) + " : " + Str(port))
+        listOfClients.append(str(ip) + " : " + str(port))
 
         client = socketClass.Socket(clientData)
         print("Connected to %s" %str(ip))
