@@ -61,10 +61,8 @@ def acceptClient(count):
             print "Sent Data to Client"
             connection.send(returnData)
 
-<<<<<<< HEAD
         client.terminate()
-=======
->>>>>>> origin/master
+
     while True:
 
         # waiting to accept connection - blocking call
