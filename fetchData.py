@@ -16,7 +16,7 @@ def dataFetcher(type,data):
     "This function acts as a switch case for switching between type of data to be fetched"
     rData = ""
     if type == '0':
-        rData = fetchWeather(data)
+        rData = fetchWeather(data).encode('utf8')
     elif type == '1':
         rData = fetchNews().encode('utf8')
     return rData
