@@ -63,7 +63,7 @@ def fetchNews():
     for data in topStories:
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
         returnedData = returnedData + data.find(class_ = "titletext").text + "@" + data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
-        print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
+        #print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
     return returnedData
 
 
