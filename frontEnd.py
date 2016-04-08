@@ -97,7 +97,7 @@ class Weather(Page):
 
             else:
                 if Weather_Report == "0":
-                    Temp.config(text="Sorry,City not found", font=("Helvetica",30))
+                    Temp.config(text="Cannot locate city", font=("Helvetica",30))
                     Temp.place(x=180, y=100)
                 else:
                     Weather_Report=Weather_Report.split('$')
