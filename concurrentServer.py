@@ -5,6 +5,7 @@ import socketClass
 import config
 from fetchData import *
 from thread import *
+import socket
 import sys
 
 server = socketClass.Socket()
@@ -16,7 +17,8 @@ def makeServerLive():
 
     try:
         server.bind(server.getHostName(), config.serverPort)
-    except:
+    except socket.error, exc:
+        print exc
         print 'Bind failed'
         return 0
 
@@ -61,11 +63,11 @@ def acceptClient(IP):
 
             print "Sent Data to Client"
             connection.send(returnData)
-       
+
         client.terminate()
 
     while True:
-        
+
         # waiting to accept connection - blocking call
         (clientData,(ip,port)) = server.accept()
 

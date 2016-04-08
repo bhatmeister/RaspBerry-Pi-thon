@@ -2,6 +2,7 @@ import socketClass
 import time
 import config
 import socket
+import string
 
 global client
 
@@ -10,14 +11,14 @@ def createSocket():
     global client
     client = socketClass.Socket()
     print "socket created"
-    client.timeout(50)
 
 def connectToSocket(serverIP, serverPort):
     "This function connects to socket"
     global client
     try:
         print "Connceting to " + str(serverIP) + ":" + str(serverPort)
-        client.connect(serverIP,config.clientPort)
+        client.timeout(15)
+        client.connect(serverIP,string.atoi(serverPort))
         print "Conncected"
         return 1
     except socket.error, exc:
@@ -30,10 +31,21 @@ def requestData(type,userInput):
     "This function requests data from the server"
     global client
     #userInput = raw_input("Enter Location:  ")
-    client.send(str(type) + '#' + userInput)
-    data = client.recieve()
-    #print data + "\n"
-    return data
-    if userInput == "~":
-        return 0
-        client.terminate()
+    try:
+        client.timeout(15)
+        print "sending"
+        client.send(str(type) + '#' + userInput)
+        print "sent"
+        client.timeout(15)
+        print "Recieving"
+        data = client.recieve()
+        print "Recieved"
+        print data + "\n"
+        return data
+    except socket.error, exc:
+        print exc
+
+def disconnect():
+    "This function will disconnect the client from the server"
+    global client
+    client.terminate()
