@@ -143,7 +143,6 @@ class News(Page):
                 T3.delete('1.0', tk.END)
                 newsQuote=requestData('1'," ")
                 newsQuote=newsQuote.split('$')
-<<<<<<< HEAD
                 
                 for index in range(len(newsQuote)):
                     newsQuote[index]=newsQuote[index].split('@')
@@ -159,48 +158,24 @@ class News(Page):
                 Quote=newsQuote[2][0]+"\n"+newsQuote[2][1]
                 T3.insert(tk.END, Quote[2])
                 T3.config(state=tk.DISABLED)                
-=======
 
-                T1.insert(tk.END, newsQuote[0])
-                T1.config(state=tk.DISABLED)
 
-                T2.insert(tk.END, newsQuote[1])
-                T2.config(state=tk.DISABLED)
 
-                T3.insert(tk.END, newsQuote[2])
-                T3.config(state=tk.DISABLED)
-
->>>>>>> origin/master
 
         refresh=tk.Button(self,text="Refresh", height=10,width=10, command=lambda: newsReport())
-<<<<<<< HEAD
         refresh.place(x=300,y=-70)     
-=======
-        refresh.place(x=570,y=-70)
->>>>>>> origin/master
+
         T1 = tk.Text(self, height=6, width=80)
         T1.place(x=0, y=25)
         T2 = tk.Text(self, height=6, width=80)
         T2.place(x=0, y=160)
         T3 = tk.Text(self, height=6, width=80)
-        T3.place(x=0, y=280)
-<<<<<<< HEAD
-        
+        T3.place(x=0, y=280)        
         T1.insert(tk.END, " ")
-=======
-
-        T1.insert(tk.END, newsQuote)
->>>>>>> origin/master
-
         T2.insert(tk.END, " ")
-
-<<<<<<< HEAD
         T3.insert(tk.END, " ")
         
-=======
-        T3.insert(tk.END, newsQuote)
 
->>>>>>> origin/master
 
 
 class MainView(tk.Frame):
