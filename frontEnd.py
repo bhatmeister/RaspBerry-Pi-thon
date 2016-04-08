@@ -56,7 +56,7 @@ class Home(Page):
         button5 = tk.Button(self, text="Connect", bg="Black",fg="White", width=10,command=lambda: serveConnect(IP.get(),Port.get(),button5,disconnect))
         button5.place(x=220,y=180)
         disconnect.place(x=355,y=180)
-        IP.place(x=220,y=137)
+        IP.place(x=200,y=137)
         Port.place(x=360,y=137)
 
 class Weather(Page):
