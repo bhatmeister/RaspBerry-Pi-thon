@@ -59,7 +59,7 @@ def acceptClient(count):
             returnData = dataFetcher(data[0], data[1])
 
             print "Sent Data to Client"
-            connection.send(returnData.encode('utf-8'))
+            connection.send(returnData)
 
         client.terminate()
 

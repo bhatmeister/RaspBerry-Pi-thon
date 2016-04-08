@@ -60,7 +60,7 @@ def fetchNews():
         #print "HEADLINE\n" + data.find(class_ = "titletext").text
         returnedData = returnedData + data.find(class_ = "titletext").text + "@" + data.find(class_ = "esc-lead-snippet-wrapper").text + "$"
         print "STORY\n" + data.find(class_ = "esc-lead-snippet-wrapper").text + "\n"
-    return returnedData
+    return returnedData.encode('utf-8')
 
 
 
