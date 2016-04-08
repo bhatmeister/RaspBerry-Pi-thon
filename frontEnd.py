@@ -5,7 +5,7 @@ import os
 createSocket()
 
 
-newsQuote='''No News Fetched Yet'''
+newsQuote='''No News Fetched Yet. Press the refresh button above'''
 connStatus=0
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -42,16 +42,16 @@ class Home(Page):
 
             button5.config(state=tk.NORMAL)
             disconnect.config(state=tk.DISABLED)
-            quote = """The Connection Has Been Killed"""
+            quote = """The connection has been terminated"""
             T.config(text=quote)
             disconnectClient()
 
         label = tk.Label(self, text="Welcome to raspberry.py client", font=("Helvetica",28))
         label.place(x=140, y=50)
         IP =tk.Entry(self, width=15)
-        
+
         IP.insert(0,' IP Address')
-        
+
         Port =tk.Entry(self, width=15)
         Port.insert(0,'Port No.')
         disconnect = tk.Button(self, text="Disconnect",bg="Black",fg="White",width=12, state=tk.DISABLED,command=lambda: serveDisconn(disconnect,button5))
@@ -90,7 +90,6 @@ class Weather(Page):
             Temp.config(text=" ")
             Status.config(text=" ")
             Humidity.config(text=" ")
-            Weather_Report=requestData('0',data)
             Forecast.config(text=" ")
             Forecast2.config(text=" ")
             Forecast3.config(text=" ")
@@ -104,10 +103,10 @@ class Weather(Page):
             Forecast11.config(text=" ")
             Forecast12.config(text=" ")
             Forecast13.config(text=" ")
-            
-            
+            Weather_Report=requestData('0',data)
+
             if Weather_Report == 0:
-                Locatn.config(text="Server Down. Call for help :P", font=("Helvetica",30))
+                Locatn.config(text="Server Down. Call for help.", font=("Helvetica",30))
                 Locatn.place(x=180, y=100)
 
             else:
@@ -143,7 +142,7 @@ class Weather(Page):
                     Forecast7.place(x=345, y=275)
                     Forecast12.config(text=Weather_Report[8][1],font=("Helvetica",12))
                     Forecast12.place(x=405, y=275)
-                    
+
                     Forecast3.config(text=" MinTemp:           ",font=("Helvetica",12))
                     Forecast3.place(x=92, y=317)
                     Forecast8.config(text=Weather_Report[4][2],font=("Helvetica",12))
@@ -156,13 +155,14 @@ class Weather(Page):
                     Forecast11.place(x=345, y=317)
                     Forecast13.config(text=Weather_Report[8][2],font=("Helvetica",12))
                     Forecast13.place(x=405, y=317)
-                    
 
 
 
-        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=5, command=lambda: sendReq(Locn.get()))
+        button5 = tk.Button(self, text="Go", bg="Black",fg="White", width=5, command=lambda:sendReq(Locn.get()))
         button5.place(x=410,y=27)
         Locn.place(x=225,y=27)
+
+
 
 
 
@@ -252,4 +252,10 @@ if __name__ == "__main__":
     main.pack(side="top", fill="both", expand=True)
     root.minsize(675 ,415)
     root.maxsize(675,415)
+
+    def closeClient():
+        "This function closes the client"
+        disconnectClient()
+        root.destroy()
+    root.protocol("WM_DELETE_WINDOW", closeClient)
     root.mainloop()
