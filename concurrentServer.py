@@ -9,6 +9,7 @@ import socket
 import sys
 
 server = socketClass.Socket()
+listOfClients = []
 
 def makeServerLive():
 
@@ -63,6 +64,7 @@ def acceptClient(IP):
 
         # waiting to accept connection - blocking call
         (clientData,(ip,port)) = server.accept()
+        listOfClients.append(Str(ip) + " : " + Str(port))
 
         client = socketClass.Socket(clientData)
         print("Connected to %s" %str(ip))
