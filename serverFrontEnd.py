@@ -7,14 +7,16 @@ root = tk.Tk()
 root.minsize(675 ,415)
 root.maxsize(675,415)
 
+#Global variables
 x=0
 count=0
-#def window()
 
 def serveLive(IP,live):
+    #Function to intitialise the server.
+     
     global x
     x=makeServerLive()
-    #print "x in loop" + str(x)
+    
     if x==0:
         IP.config(state=tk.NORMAL)
         IP.delete('1.0', tk.END)
@@ -33,7 +35,6 @@ def window():
 
     label = tk.Label( text="Welcome to raspberry.py server", font=("Helvetica",28))
     label.place(x=115, y=25)
-
     label = tk.Label( text="Server Socket:", font=("Helvetica",16))
     label.place(x=195, y=100)
 
@@ -41,11 +42,9 @@ def window():
     IP.place(x=300, y=100)
     IP.insert(tk.END, "The server is not live yet")
     IP.config(state=tk.DISABLED)
-
+    
     live = tk.Button( text="LIVE", font=("Helvetica",16),command=lambda: serveLive(IP,live))
     live.place(x=300, y=130)
-
-
 
     text = tk.Text(root, height=2, width=30,font=("Helvetica",16),state=tk.DISABLED)
     text.place(x=270, y=210)
@@ -68,20 +67,17 @@ def window():
     text.insert(tk.END, "\n")
 
 
-    # text1.config(state=tk.NORMAL)
-    # text1.delete('1.0', tk.END)
-    # text1.insert(tk.END, list[count2])
-    # text1.config(state=tk.DISABLED)
-    # count2=0
 
 
 def closeServer():
     "This function closes the server"
+    
     terminateServer()
     root.destroy()
+    
+    
 window()
 
 root.title("ProjectX")
-
 root.protocol("WM_DELETE_WINDOW", closeServer)
 root.mainloop()
