@@ -2,7 +2,7 @@ import Tkinter as tk
 from client import *
 import os
 
-createSocket()
+
 
 
 newsQuote='''No News Fetched Yet. Press the refresh button above'''
@@ -23,7 +23,9 @@ class Home(Page):
             T.place(x=150, y=215)
 
             global connStatus
+            createSocket()
             connStatus = connectToSocket(IP,Port)
+
 
             if connStatus == 1:
                 quote = """Connection Established Successfully"""
@@ -33,7 +35,7 @@ class Home(Page):
 
             elif connStatus == 0:
                 quote = """Connection Couldn't Be Established"""
-                createSocket()
+
             T.config(text=quote)
 
         def serveDisconn(disconnect,button5):
